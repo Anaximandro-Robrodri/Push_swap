@@ -7,10 +7,9 @@
 
 typedef struct s_push
 {
-	int		argc;
-	char	**argv;
+	t_struct	*prev;
+	int			num;
+	t_struct	*next;
 }	t_push;
-
-int	main (int argc, char **argv);
 
 #endif
