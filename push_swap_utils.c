@@ -1,27 +1,40 @@
 #include "push_swap.h"
 
-int	ft_is_space (char *str)
+int	ft_is_space (char a)
 {
-	int	i;
-	int	sign;
+	if ((a >= 9 && a <= 13) || a == ' ')
+		return (1);
+	return (0);
+}
 
-	i = 0;
+int	ft_is_sign (char a)
+{
+	if (a == '+' || a == '-')
+		return (1);
+	return (0);
+}
+
+long	ft_atoi_plus (char *str)
+{
+	long			nb;
+	int				sign;
+
+	nb = 0;
 	sign = 1;
-
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' \
-			|| str[i] == '\f' || str[i] == '\v' || str[i] == '\r')
-		i++;
-	while (str[i] == '+' || str[i] == '-')
+	while (ft_is_space(*str))
+		str++;
+	while (ft_is_sign(*str))
 	{
-		if ((str[i] == '+' || str[i] == '-') && (str[i + 1] == '+' || str[i + 1] == '-'))
-			return (0);
-		else (str[i] == '-')
-		{
-			sign *= (-1);
-		}
-		i++;
+		if (*str == '-')
+			sign *= -1;
+		str++;
 	}
-	return (sign);
+	while (ft_isdigit(*str))
+		nb = nb * 10 + *str++ - '0';
+	nb *= sign;
+	if (nb > INT_MAX || nb < INT_MIN)
+		ft_error(0);
+	return (nb);
 }
 
 /*t_push	*ft_lst_push_new(int argc, char **argv, t_push *lst)

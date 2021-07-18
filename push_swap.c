@@ -6,105 +6,56 @@ void	ft_error(int i)
 	exit(i);
 }
 
-void	ft_analyze_arg (int pos, int i, char **argv)
+static	void	ft_error_control(int i, char **argv)
 {
-		while (argv[i][pos])
-		{
-			if (!ft_isdigit(argv[i][pos]) && argv[i][pos] != ' ')
-				ft_error(0);
-			pos++;
-		}
-}
+	int	pos;
+	int	flag;
 
-// En el futuro lo cambiamos para que lo almacene en la lista
-int	ft_store_num (int i, int j, int minus, char **argv)
-{
-	while (ft_isdigit(argv[i][j]))
+	pos = 0;
+	flag = 0;
+	while (argv[i][pos])
 	{
-		if (minus == -1)
-		{
-			write (1, "-", 1);
-			minus = 1;
-		}
-		write (1, &argv[i][j++], 1);
+		if (!ft_isdigit(argv[i][pos]) && !ft_is_space(argv[i][pos]) 
+				&& !ft_is_sign(argv[i][pos]))
+				ft_error(0);
+		if (ft_isdigit(argv[i][pos]))
+			flag = 1;
+		pos++;
 	}
-	write (1, "\n", 1);
-	return (j);
-}
-
-int	ft_matrix_len(char **matrix)
-{
-	int	i;
-	i = 0;
-	while (matrix[i])
-		i++;
-	return (i);
-}
-
-void	ft_is_one_arg(int pos, int i, char **argv)
-{
-	char	**split;
-
-	split = ft_split(&argv[i][pos], ' ');
-	if (ft_matrix_len(split) < 2)
+	if (flag == 0)
 		ft_error(0);
 }
 
-void	ft_check_argv(char **argv, int i)
+// Cambiar para que lo guarde en la lista
+static	void	ft_store_arg(int num)
 {
-	int	j;
-	int	minus;
+	printf("%d\n", num);
+}
 
-	j = 0;
-	minus = 1;
-	while (argv[i][j])
+static	void	ft_args(int argc, char **argv)
+{
+	int	num;
+
+	while (--argc)
 	{
-		while ((argv[i][j] == '0' && (ft_isdigit(argv[i][j + 1]) || argv[i][j + 1] == '+' || argv[i][j + 1] == '-'))
-			|| argv[i][j] == '+' || argv[i][j] == '-' || argv[i][j] == ' ')
-		{
-			if (argv[i][j] == '-')
-				minus *= -1;
-			j++;
-		}
-		if (!ft_isdigit(argv[i][j]))
-			break ;
-		ft_analyze_arg(j, i, argv);
-		j = ft_store_num(i, j, minus, argv);
-		minus = 1;
-		j++;
+		ft_error_control(argc, argv);
+		num = ft_atoi_plus(argv[argc]);
+		ft_store_arg(num);
 	}
+}
+
+static	void	ft_analyze_args(int argc, char **argv)
+{
+/*	if (argc < 3)
+		ft_check_one_arg(argv);
+	else*/
+		ft_args(argc, argv);
 }
 
 int	main (int argc, char **argv)
 {
-	int	i;
-	int	j;
-	int	minus;
-
-	minus = 1;
-	i = 1;
-	if (argc > 2)
-	{
-		while (--argc)
-		{
-			j = 0;
-			while ((argv[i][j] == '0' && (ft_isdigit(argv[i][j + 1]) || argv[i][j + 1] == '+' || argv[i][j + 1] == '-'))
-				|| argv[i][j] == '+' || argv[i][j] == '-')
-			{
-				if (argv[i][j] == '-')
-					minus *= -1;
-				j++;
-			}
-			ft_analyze_arg(j, i, argv);
-			ft_store_num(i, j, minus, argv);
-			minus = 1;
-			i++;
-		}
-	}
-	else
-	{
-		ft_is_one_arg(0, i, argv);
-		ft_check_argv(argv, i);
-	}
+	if (argc < 2)
+		ft_error(0);
+	ft_analyze_args(argc, argv);
 	return(0);
 }
