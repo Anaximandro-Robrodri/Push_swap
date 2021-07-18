@@ -29,33 +29,44 @@ static	void	ft_error_control(int i, char **argv)
 // Cambiar para que lo guarde en la lista
 static	void	ft_store_arg(int num)
 {
+//	ft_lst_push_new(num);
 	printf("%d\n", num);
 }
 
 static	void	ft_args(int argc, char **argv)
 {
-	int	num;
+	int		num;
+	char	**split;
+	int		len;
 
 	while (--argc)
 	{
 		ft_error_control(argc, argv);
-		num = ft_atoi_plus(argv[argc]);
-		ft_store_arg(num);
+		split = ft_split(argv[argc], ' ');
+		len = ft_split_len(split);
+		if (len > 1)
+		{
+			while (len--)
+			{
+				num = ft_atoi_plus(split[len]);
+				ft_store_arg(num);
+			}
+		}
+		else
+		{
+			num = ft_atoi_plus(argv[argc]);
+			ft_store_arg(num);
+		}
 	}
-}
-
-static	void	ft_analyze_args(int argc, char **argv)
-{
-/*	if (argc < 3)
-		ft_check_one_arg(argv);
-	else*/
-		ft_args(argc, argv);
 }
 
 int	main (int argc, char **argv)
 {
+//	t_push	stack_a;
+//	t_push	stack_b;
+
 	if (argc < 2)
 		ft_error(0);
-	ft_analyze_args(argc, argv);
+	ft_args(argc, argv);
 	return(0);
 }
