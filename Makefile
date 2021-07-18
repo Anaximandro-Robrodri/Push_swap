@@ -3,7 +3,8 @@ LIBFT = ./libft/libft.a
 NAME = push_swap.a
 
 SRC =	push_swap.c \
-		push_swap_utils.c
+		push_swap_utils.c \
+		push_swap_lst_utils.c
 
 OBJS = $(SRC:.c=.o)
 

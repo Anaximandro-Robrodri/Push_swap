@@ -27,13 +27,14 @@ static	void	ft_error_control(int i, char **argv)
 }
 
 // Cambiar para que lo guarde en la lista
-static	void	ft_store_arg(int num)
+static	void	ft_store_arg(int num, t_push *stack_a)
 {
-//	ft_lst_push_new(num);
-	printf("%d\n", num);
+//	ft_push_lst_new(num, stack_a);
+	stack_a->num = num;
+	printf("%d\n", stack_a->num);
 }
 
-static	void	ft_args(int argc, char **argv)
+static	void	ft_args(int argc, char **argv, t_push *stack_a)
 {
 	int		num;
 	char	**split;
@@ -49,24 +50,25 @@ static	void	ft_args(int argc, char **argv)
 			while (len--)
 			{
 				num = ft_atoi_plus(split[len]);
-				ft_store_arg(num);
+				ft_store_arg(num, stack_a);
 			}
 		}
 		else
 		{
 			num = ft_atoi_plus(argv[argc]);
-			ft_store_arg(num);
+			ft_store_arg(num, stack_a);
 		}
 	}
 }
 
 int	main (int argc, char **argv)
 {
-//	t_push	stack_a;
+	t_push	stack_a;
 //	t_push	stack_b;
 
 	if (argc < 2)
 		ft_error(0);
-	ft_args(argc, argv);
+	ft_args(argc, argv, &stack_a);
+	printf("%d\n", stack_a.num);
 	return(0);
 }

@@ -18,7 +18,12 @@ int 	ft_is_space (char a);
 int 	ft_is_sign (char a);
 int		ft_split_len(char **str);
 long	ft_atoi_plus(char *str);
-char	*ft_move_atoi(char *str);
+//char	*ft_move_atoi(char *str);
 void	ft_error(int i);
+
+//////////////////////////////////////////////////////////////
+// LST FUNCTIONS
+
+ void  ft_push_lst_new (int num, t_push *lst);
 
 #endif
