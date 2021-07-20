@@ -26,14 +26,6 @@ static	void	ft_error_control(int i, char **argv)
 		ft_error(0);
 }
 
-// Cambiar para que lo guarde en la lista
-static	void	ft_store_arg(int num, t_push *stack_a)
-{
-//	ft_push_lst_new(num, stack_a);
-	stack_a->num = num;
-	printf("%d\n", stack_a->num);
-}
-
 static	void	ft_args(int argc, char **argv, t_push *stack_a)
 {
 	int		num;
@@ -45,19 +37,14 @@ static	void	ft_args(int argc, char **argv, t_push *stack_a)
 		ft_error_control(argc, argv);
 		split = ft_split(argv[argc], ' ');
 		len = ft_split_len(split);
-		if (len > 1)
+		while (len--)
 		{
-			while (len--)
-			{
-				num = ft_atoi_plus(split[len]);
-				ft_store_arg(num, stack_a);
-			}
+			num = ft_atoi_plus(split[len]);
+			free(split[len]);
+			stack_a->num = num;
+			printf("%d\n", stack_a->num);
 		}
-		else
-		{
-			num = ft_atoi_plus(argv[argc]);
-			ft_store_arg(num, stack_a);
-		}
+		free(split);
 	}
 }
 
@@ -69,6 +56,6 @@ int	main (int argc, char **argv)
 	if (argc < 2)
 		ft_error(0);
 	ft_args(argc, argv, &stack_a);
-	printf("%d\n", stack_a.num);
+	system("leaks a.out");
 	return(0);
 }

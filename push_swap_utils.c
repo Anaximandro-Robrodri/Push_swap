@@ -48,17 +48,3 @@ long	ft_atoi_plus (char *str)
 		ft_error(0);
 	return (nb);
 }
-
-// Función de Cristian, permite desplazar el atoi después de guardar el Num
-// En principio no la necestio porque uso el split para guardar el Num
-// Guardar por si acaso.
-/*char	*ft_move_atoi (char *str)
-{
-	while (ft_is_space(*str))
-		str++;
-	while (ft_is_sign(*str))
-		str++;
-	while (ft_isdigit(*str))
-		str++;
-	return(str);
-}*/
