@@ -49,7 +49,7 @@ static	t_push	*ft_args(int argc, char **argv, t_push *stack_a)
 				tmp = stack_a;
 				stack_a = create_new_node(num);
 				stack_a->next = tmp;
-//				stack_a->next->prev = stack_a;
+				stack_a->prev = stack_a;
 			}
 		}
 		free(split);
@@ -66,6 +66,9 @@ int	main (int argc, char **argv)
 		ft_error(0);
 	stack_a = NULL;
 	stack_a = ft_args(argc, argv, stack_a);
+	if (ft_len_lst(stack_a) < 2)
+		ft_error(0);
+	ft_check_equals(stack_a);
 	print_list(stack_a);
 	free_list(&stack_a);
 	system("leaks a.out");
