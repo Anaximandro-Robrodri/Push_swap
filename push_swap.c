@@ -26,12 +26,26 @@ static	void	ft_error_control(int i, char **argv)
 		ft_error(0);
 }
 
+static void	ft_store_args(t_push **stack_a, int num)
+{
+	t_push	*tmp;
+
+	if (*stack_a == NULL)
+		*stack_a = create_new_node(num);
+	else
+	{
+		tmp = *stack_a;
+		*stack_a = create_new_node(num);
+		(*stack_a)->next = tmp;
+		(*stack_a)->prev = *stack_a;
+	}
+}
+
 static	t_push	*ft_args(int argc, char **argv, t_push *stack_a)
 {
 	int		num;
 	char	**split;
 	int		len;
-	t_push	*tmp;
 
 	while (--argc)
 	{
@@ -42,15 +56,7 @@ static	t_push	*ft_args(int argc, char **argv, t_push *stack_a)
 		{
 			num = ft_atoi_plus(split[len]);
 			free(split[len]);
-			if (stack_a == NULL)
-				stack_a = create_new_node(num);
-			else
-			{
-				tmp = stack_a;
-				stack_a = create_new_node(num);
-				stack_a->next = tmp;
-				stack_a->prev = stack_a;
-			}
+			ft_store_args(&stack_a, num);
 		}
 		free(split);
 	}
