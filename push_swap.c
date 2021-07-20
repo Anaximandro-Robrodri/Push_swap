@@ -26,11 +26,12 @@ static	void	ft_error_control(int i, char **argv)
 		ft_error(0);
 }
 
-static	void	ft_args(int argc, char **argv, t_push *stack_a)
+static	t_push	*ft_args(int argc, char **argv, t_push *stack_a)
 {
 	int		num;
 	char	**split;
 	int		len;
+	t_push	*tmp;
 
 	while (--argc)
 	{
@@ -41,21 +42,32 @@ static	void	ft_args(int argc, char **argv, t_push *stack_a)
 		{
 			num = ft_atoi_plus(split[len]);
 			free(split[len]);
-			stack_a->num = num;
-			printf("%d\n", stack_a->num);
+			if (stack_a == NULL)
+				stack_a = create_new_node(num);
+			else
+			{
+				tmp = stack_a;
+				stack_a = create_new_node(num);
+				stack_a->next = tmp;
+//				stack_a->next->prev = stack_a;
+			}
 		}
 		free(split);
 	}
+	return(stack_a);
 }
 
 int	main (int argc, char **argv)
 {
-	t_push	stack_a;
+	t_push	*stack_a;
 //	t_push	stack_b;
 
 	if (argc < 2)
 		ft_error(0);
-	ft_args(argc, argv, &stack_a);
+	stack_a = NULL;
+	stack_a = ft_args(argc, argv, stack_a);
+	print_list(stack_a);
+	free_list(&stack_a);
 	system("leaks a.out");
 	return(0);
 }
