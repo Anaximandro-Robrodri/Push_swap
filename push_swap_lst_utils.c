@@ -13,18 +13,6 @@ t_push	*create_new_node(int num)
 	return (node);
 }
 
-void	free_list(t_push **head)
-{
-   t_push *tmp;
-
-   while (*head)    
-   	{
-		tmp = *head;
-		*head = (*head)->next;
-		free(tmp);
-    }
-}
-
 // Función para comprobar que todo está ok. Borrar más adelante / Sustituir por write
 void	print_list(t_push *stack_a)
 {
@@ -45,36 +33,26 @@ int	ft_len_lst(t_push *stack_a)
 	while (aux)
 	{
 		aux = aux->next;
-	   i++;	
+		i++;	
 	}
 	return (i);
 }
 
 void	ft_check_equals(t_push *stack_a)
 {
-	int	*used;
-	int	i;
-	int	pos;
+	t_push	*tmp;
+	int		len;
 
-	used = ft_calloc(10, sizeof(int));
-	i = 0;
-	while (stack_a)
+	len = ft_len_lst(stack_a);
+	while (len--)
 	{
-		if (!used[0])
-			used[i] = stack_a->num;
-		else
+		tmp = stack_a->next;
+		while (tmp)
 		{
-			pos = 0;
-			while (used[pos])
-			{
-				if (stack_a->num == used[pos])
-					ft_error(0);
-				pos++;
-			}
-			used[i] = stack_a->num;
+			if (stack_a->num == tmp->num)
+				ft_error(0);
+			tmp = tmp->next;
 		}
-		i++;
-		stack_a = stack_a->next;
 	}
-	free(used);
+	stack_a = stack_a->next;
 }

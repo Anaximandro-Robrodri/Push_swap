@@ -4,7 +4,8 @@ NAME = push_swap.a
 
 SRC =	push_swap.c \
 		push_swap_utils.c \
-		push_swap_lst_utils.c
+		push_swap_lst_utils.c \
+		push_swap_moves.c
 
 OBJS = $(SRC:.c=.o)
 

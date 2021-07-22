@@ -24,9 +24,13 @@ void	ft_error(int i);
 // LST FUNCTIONS
 
 t_push	*create_new_node(int num);
-void	free_list(t_push **head);
 void	print_list(t_push	*stack_a);
-void	ft_check_equals(t_push *stack_a);
 int		ft_len_lst(t_push *stack_a);
+void	ft_check_equals(t_push *stack_a);
+
+/////////////////////////////////////////////////////////////
+//MOVEMENTS
+
+void	swap_a(t_push **stack_a);
 
 #endif
