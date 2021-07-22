@@ -48,3 +48,10 @@ long	ft_atoi_plus (char *str)
 		ft_error(0);
 	return (nb);
 }
+
+void	ft_print_success(int i, t_push *stack_a)
+{
+	print_list(stack_a);
+	write(1, "GOOD JOB :)", 11);
+	exit (i);
+}

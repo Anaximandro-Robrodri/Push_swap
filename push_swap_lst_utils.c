@@ -9,7 +9,6 @@ t_push	*create_new_node(int num)
 		return (0);
 	node->num = num;
 	node->next = NULL;
-	node->prev = NULL;
 	return (node);
 }
 
@@ -55,4 +54,26 @@ void	ft_check_equals(t_push *stack_a)
 		}
 		stack_a = stack_a->next;
 	}
+}
+
+void	check_success(t_push *stack_a)
+{
+	t_push	*ret;
+	t_push	*tmp;
+	int		len;
+
+	len = ft_len_lst(stack_a);
+	ret = stack_a;
+	while (len--)
+	{
+		tmp = stack_a->next;
+		while (tmp)
+		{
+			if (stack_a->num > tmp->num)
+				return ;
+			tmp = tmp->next;
+		}
+		stack_a = stack_a->next;
+	}
+	ft_print_success(1, ret);
 }

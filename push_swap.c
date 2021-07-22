@@ -37,7 +37,6 @@ void	ft_store_args(t_push **stack, int num)
 		tmp = *stack;
 		*stack = create_new_node(num);
 		(*stack)->next = tmp;
-		(*stack)->prev = *stack;
 	}
 }
 
@@ -76,6 +75,7 @@ int	main (int argc, char **argv)
 	if (ft_len_lst(stack_a) < 2)
 		ft_error(0);
 	ft_check_equals(stack_a);
+	check_success(stack_a);
 	print_list(stack_a);
 	printf("-------------------------\n");
 	print_list(stack_b);

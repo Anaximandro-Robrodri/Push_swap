@@ -10,7 +10,6 @@ typedef struct s_push
 {
 	int				num;
 	struct	s_push	*next;
-	struct	s_push	*prev;
 }	t_push;
 
 int		main (int argc, char **argv);
@@ -19,6 +18,7 @@ int 	ft_is_sign (char a);
 int		ft_split_len(char **str);
 long	ft_atoi_plus(char *str);
 void	ft_error(int i);
+void	ft_print_success(int i, t_push *stack_a);
 
 //////////////////////////////////////////////////////////////
 // LST FUNCTIONS
@@ -28,6 +28,7 @@ void	print_list(t_push	*stack_a);
 int		ft_len_lst(t_push *stack_a);
 void	ft_check_equals(t_push *stack_a);
 void	ft_store_args(t_push **stack, int num);
+void	check_success(t_push *stack_a);
 
 /////////////////////////////////////////////////////////////
 //MOVEMENTS
