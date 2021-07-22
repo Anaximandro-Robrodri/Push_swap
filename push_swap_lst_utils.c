@@ -53,6 +53,6 @@ void	ft_check_equals(t_push *stack_a)
 				ft_error(0);
 			tmp = tmp->next;
 		}
+		stack_a = stack_a->next;
 	}
-	stack_a = stack_a->next;
 }
