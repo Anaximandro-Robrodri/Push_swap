@@ -26,18 +26,18 @@ static	void	ft_error_control(int i, char **argv)
 		ft_error(0);
 }
 
-static void	ft_store_args(t_push **stack_a, int num)
+void	ft_store_args(t_push **stack, int num)
 {
 	t_push	*tmp;
 
-	if (*stack_a == NULL)
-		*stack_a = create_new_node(num);
+	if (*stack == NULL)
+		*stack = create_new_node(num);
 	else
 	{
-		tmp = *stack_a;
-		*stack_a = create_new_node(num);
-		(*stack_a)->next = tmp;
-		(*stack_a)->prev = *stack_a;
+		tmp = *stack;
+		*stack = create_new_node(num);
+		(*stack)->next = tmp;
+		(*stack)->prev = *stack;
 	}
 }
 
@@ -66,19 +66,29 @@ static	t_push	*ft_args(int argc, char **argv, t_push *stack_a)
 int	main (int argc, char **argv)
 {
 	t_push	*stack_a;
-//	t_push	stack_b;
+	t_push	*stack_b;
 
 	if (argc < 2)
 		ft_error(0);
 	stack_a = NULL;
+	stack_b = NULL;
 	stack_a = ft_args(argc, argv, stack_a);
 	if (ft_len_lst(stack_a) < 2)
 		ft_error(0);
 	ft_check_equals(stack_a);
 	print_list(stack_a);
-	reverse_rotate_a(&stack_a);
+	printf("-------------------------\n");
+	print_list(stack_b);
+	push_b(&stack_a, &stack_b);
 	printf("-------------------------\n");
 	print_list(stack_a);
+	printf("-------------------------\n");
+	print_list(stack_b);
+	push_a(&stack_a, &stack_b);
+	printf("-------------------------\n");
+	print_list(stack_a);
+	printf("-------------------------\n");
+	print_list(stack_b);
 	system("leaks a.out");
 	return(0);
 }

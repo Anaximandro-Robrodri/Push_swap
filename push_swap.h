@@ -27,6 +27,7 @@ t_push	*create_new_node(int num);
 void	print_list(t_push	*stack_a);
 int		ft_len_lst(t_push *stack_a);
 void	ft_check_equals(t_push *stack_a);
+void	ft_store_args(t_push **stack, int num);
 
 /////////////////////////////////////////////////////////////
 //MOVEMENTS
@@ -40,5 +41,7 @@ void	rr(t_push **stack_a, t_push **stack_b);
 void	reverse_rotate_a(t_push **stack_a);
 void	reverse_rotate_b(t_push **stack_b);
 void	rrr(t_push **stack_a, t_push **stack_b);
+void	push_b(t_push **stack_a, t_push **stack_b);
+void	push_a(t_push **stack_a, t_push **stack_b);
 
 #endif
