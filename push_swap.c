@@ -75,20 +75,8 @@ int	main (int argc, char **argv)
 	if (ft_len_lst(stack_a) < 2)
 		ft_error(0);
 	ft_check_equals(stack_a);
-	check_success(stack_a);
+	ft_order(&stack_a, &stack_b);
 	print_list(stack_a);
-	printf("-------------------------\n");
-	print_list(stack_b);
-	push_b(&stack_a, &stack_b);
-	printf("-------------------------\n");
-	print_list(stack_a);
-	printf("-------------------------\n");
-	print_list(stack_b);
-	push_a(&stack_a, &stack_b);
-	printf("-------------------------\n");
-	print_list(stack_a);
-	printf("-------------------------\n");
-	print_list(stack_b);
 	system("leaks a.out");
 	return(0);
 }

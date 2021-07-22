@@ -45,4 +45,9 @@ void	rrr(t_push **stack_a, t_push **stack_b);
 void	push_b(t_push **stack_a, t_push **stack_b);
 void	push_a(t_push **stack_a, t_push **stack_b);
 
+//////////////////////////////////////////////////////////////
+//OPERATIONS ORDER
+void	ft_order(t_push **stack_a, t_push **stack_b);
+void	ft_three_num(t_push **a);
+
 #endif
