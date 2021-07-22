@@ -38,5 +38,7 @@ void	rotate_a(t_push **stack_a);
 void	rotate_b(t_push **stack_b);
 void	rr(t_push **stack_a, t_push **stack_b);
 void	reverse_rotate_a(t_push **stack_a);
+void	reverse_rotate_b(t_push **stack_b);
+void	rrr(t_push **stack_a, t_push **stack_b);
 
 #endif
