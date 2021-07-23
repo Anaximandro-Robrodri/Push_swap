@@ -33,14 +33,11 @@ int		check_success(t_push *stack_a);
 /////////////////////////////////////////////////////////////
 //MOVEMENTS
 
-void	swap_a(t_push **stack_a);
-void	swap_b(t_push **stack_b);
+void	swap(t_push **stack);
 void	ss(t_push **stack_a, t_push **stack_b);
-void	rotate_a(t_push **stack_a);
-void	rotate_b(t_push **stack_b);
+void	rotate(t_push **stack);
 void	rr(t_push **stack_a, t_push **stack_b);
-void	reverse_rotate_a(t_push **stack_a);
-void	reverse_rotate_b(t_push **stack_b);
+void	reverse_rotate(t_push **stack);
 void	rrr(t_push **stack_a, t_push **stack_b);
 void	push_b(t_push **stack_a, t_push **stack_b);
 void	push_a(t_push **stack_a, t_push **stack_b);

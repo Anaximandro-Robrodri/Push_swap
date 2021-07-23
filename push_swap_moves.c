@@ -1,64 +1,35 @@
 #include "push_swap.h"
 
-void	swap_a(t_push **stack_a)
+void	swap(t_push **stack)
 {
 	t_push	*tmp;
 
-	if (ft_len_lst(*stack_a) < 2)
+	if (ft_len_lst(*stack) < 2)
 		return ;
-	tmp = (*stack_a)->next->next;
-	(*stack_a)->next->next = *stack_a;
-	*stack_a = (*stack_a)->next;
-	(*stack_a)->next->next = tmp;
-}
-
-void	swap_b(t_push **stack_b)
-{
-	t_push	*tmp;
-
-	if (ft_len_lst(*stack_b) < 2)
-		return ;
-	tmp = (*stack_b)->next->next;
-	(*stack_b)->next->next = *stack_b;
-	*stack_b = (*stack_b)->next;
-	(*stack_b)->next->next = tmp;
+	tmp = (*stack)->next->next;
+	(*stack)->next->next = *stack;
+	*stack = (*stack)->next;
+	(*stack)->next->next = tmp;
 }
 
 void	ss(t_push **stack_a, t_push **stack_b)
 {
-	swap_a(stack_a);
-	swap_b(stack_b);
+	swap(stack_a);
+	swap(stack_b);
 }
 
-void	rotate_a(t_push **stack_a)
+void	rotate(t_push **stack)
 {
 	t_push	*tmp;
 	t_push	*dsp;
 
-	if (ft_len_lst(*stack_a) < 2)
+	if (ft_len_lst(*stack) < 2)
 		return ;
-	tmp = *stack_a;
+	tmp = *stack;
 	dsp = tmp;
-	*stack_a = (*stack_a)->next;
+	*stack = (*stack)->next;
 	while (dsp->next)
 		dsp = dsp->next;
 	dsp->next = tmp;
 	tmp->next = NULL;
-}
-
-void	rotate_b(t_push **stack_b)
-{
-	t_push	*tmp;
-	t_push	*dsp;
-
-	if (ft_len_lst(*stack_b) < 2)
-		return ;
-	tmp = *stack_b;
-	dsp = tmp;
-	*stack_b = (*stack_b)->next;
-	while (dsp->next)
-		dsp = dsp->next;
-	dsp->next = tmp;
-	tmp->next = NULL;
-
 }

@@ -4,17 +4,17 @@ void	ft_three_num (t_push **a)
 {
 	if (((*a)->num > (*a)->next->num)
 			&& ((*a)->num > (*a)->next->next->num))
-		rotate_a(a);
+		rotate(a);
 	if (((*a)->num > (*a)->next->num)
 			&& ((*a)->num < (*a)->next->next->num))
-		swap_a(a);
+		swap(a);
 	if (((*a)->num < (*a)->next->num)
 			&& ((*a)->next->num > (*a)->next->next->num))
-		reverse_rotate_a(a);
+		reverse_rotate(a);
 	{
 		if (((*a)->num > (*a)->next->num)
 			&& ((*a)->num < (*a)->next->next->num))
-		swap_a(a);
+		swap(a);
 	}
 }
 
@@ -24,6 +24,11 @@ void	ft_five_num(t_push **a, t_push **b, int len)
 	if (len == 5)
 		push_b(a, b);
 	ft_three_num(a);
+	if (ft_len_lst(*b) > 1)
+	{
+		if ((*b)->num < (*b)->next->num)
+			swap(b);
+	}
 	push_a(a, b);
 }
 
@@ -35,7 +40,7 @@ void	ft_order(t_push	**stack_a, t_push **stack_b)
 		return ;
 	len = ft_len_lst(*stack_a);
 	if (len == 2)
-		swap_a(stack_a);
+		swap(stack_a);
 	else if (len == 3)
 		ft_three_num(stack_a);
 	else if (len <= 5)

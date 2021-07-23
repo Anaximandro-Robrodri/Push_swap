@@ -2,52 +2,32 @@
 
 void	rr(t_push **stack_a, t_push **stack_b)
 {
-	rotate_a(stack_a);
-	rotate_b(stack_b);
+	rotate(stack_a);
+	rotate(stack_b);
 }
 
-void	reverse_rotate_a(t_push **stack_a)
+void	reverse_rotate(t_push **stack)
 {
 	t_push	*tmp;
 	t_push	*dsp;
 	int		len;
 
-	len = ft_len_lst(*stack_a);
+	len = ft_len_lst(*stack);
 	if (len < 2)
 		return ;
-	dsp = *stack_a;
+	dsp = *stack;
 	while (dsp->next)
 	{
 		tmp = dsp;
 		dsp = dsp->next;
 	}
-	dsp->next = (*stack_a);
-	*stack_a = dsp;
-	tmp->next = NULL;
-}
-
-void	reverse_rotate_b(t_push **stack_b)
-{
-	t_push	*tmp;
-	t_push	*dsp;
-	int		len;
-
-	len = ft_len_lst(*stack_b);
-	if (len < 2)
-		return ;
-	dsp = *stack_b;
-	while (dsp->next)
-	{
-		tmp = dsp;
-		dsp = dsp->next;
-	}
-	dsp->next = (*stack_b);
-	*stack_b = dsp;
+	dsp->next = (*stack);
+	*stack = dsp;
 	tmp->next = NULL;
 }
 
 void	rrr(t_push **stack_a, t_push **stack_b)
 {
-	reverse_rotate_a(stack_a);
-	reverse_rotate_b(stack_b);
+	reverse_rotate(stack_a);
+	reverse_rotate(stack_b);
 }
