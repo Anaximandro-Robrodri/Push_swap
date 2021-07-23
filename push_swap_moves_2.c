@@ -2,11 +2,12 @@
 
 void	rr(t_push **stack_a, t_push **stack_b)
 {
-	rotate(stack_a);
-	rotate(stack_b);
+	rotate(stack_a, 2);
+	rotate(stack_b, 2);
+	ft_putstr("rr\n");
 }
 
-void	reverse_rotate(t_push **stack)
+void	reverse_rotate(t_push **stack, int i)
 {
 	t_push	*tmp;
 	t_push	*dsp;
@@ -24,10 +25,15 @@ void	reverse_rotate(t_push **stack)
 	dsp->next = (*stack);
 	*stack = dsp;
 	tmp->next = NULL;
+	if (i == 1)
+		ft_putstr("rra\n");
+	else if (i == 0)
+		ft_putstr("rrb\n");
 }
 
 void	rrr(t_push **stack_a, t_push **stack_b)
 {
-	reverse_rotate(stack_a);
-	reverse_rotate(stack_b);
+	reverse_rotate(stack_a, 2);
+	reverse_rotate(stack_b, 2);
+	ft_putstr("rrr\n");
 }

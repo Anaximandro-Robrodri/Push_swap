@@ -33,7 +33,7 @@ long	ft_atoi_plus (char *str)
 	sign = 1;
 	while (ft_is_space(*str))
 		str++;
-	while (ft_is_sign(*str))
+	if (ft_is_sign(*str))
 	{
 		if (*str == '-')
 			sign *= -1;
@@ -47,11 +47,4 @@ long	ft_atoi_plus (char *str)
 	if (nb > INT_MAX || nb < INT_MIN)
 		ft_error(0);
 	return (nb);
-}
-
-void	ft_print_success(int i, t_push *stack_a)
-{
-	print_list(stack_a);
-	write(1, "GOOD JOB :)", 11);
-	exit (i);
 }

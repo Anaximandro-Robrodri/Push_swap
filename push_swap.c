@@ -68,7 +68,7 @@ int	main (int argc, char **argv)
 	t_push	*stack_b;
 
 	if (argc < 2)
-		ft_error(0);
+		exit(0);
 	stack_a = NULL;
 	stack_b = NULL;
 	stack_a = ft_args(argc, argv, stack_a);
@@ -76,7 +76,7 @@ int	main (int argc, char **argv)
 		ft_error(0);
 	ft_check_equals(stack_a);
 	ft_order(&stack_a, &stack_b);
-	print_list(stack_a);
-	system("leaks a.out");
+//	print_list(stack_a);
+//	system("leaks a.out");
 	return(0);
 }
