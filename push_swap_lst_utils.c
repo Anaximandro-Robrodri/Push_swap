@@ -56,7 +56,7 @@ void	ft_check_equals(t_push *stack_a)
 	}
 }
 
-void	check_success(t_push *stack_a)
+int	check_success(t_push *stack_a)
 {
 	t_push	*ret;
 	t_push	*tmp;
@@ -70,10 +70,10 @@ void	check_success(t_push *stack_a)
 		while (tmp)
 		{
 			if (stack_a->num > tmp->num)
-				return ;
+				return(0);
 			tmp = tmp->next;
 		}
 		stack_a = stack_a->next;
 	}
-	ft_print_success(1, ret);
+	return (1);
 }

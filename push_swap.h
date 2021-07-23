@@ -28,7 +28,7 @@ void	print_list(t_push	*stack_a);
 int		ft_len_lst(t_push *stack_a);
 void	ft_check_equals(t_push *stack_a);
 void	ft_store_args(t_push **stack, int num);
-void	check_success(t_push *stack_a);
+int		check_success(t_push *stack_a);
 
 /////////////////////////////////////////////////////////////
 //MOVEMENTS
@@ -49,5 +49,6 @@ void	push_a(t_push **stack_a, t_push **stack_b);
 //OPERATIONS ORDER
 void	ft_order(t_push **stack_a, t_push **stack_b);
 void	ft_three_num(t_push **a);
+void	ft_five_num(t_push **a, t_push **b, int len);
 
 #endif

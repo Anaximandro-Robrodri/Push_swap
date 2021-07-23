@@ -15,11 +15,6 @@ void	reverse_rotate_a(t_push **stack_a)
 	len = ft_len_lst(*stack_a);
 	if (len < 2)
 		return ;
-	if (len == 2)
-	{
-		swap_a(stack_a);
-		return ;
-	}
 	dsp = *stack_a;
 	while (dsp->next)
 	{
@@ -40,11 +35,6 @@ void	reverse_rotate_b(t_push **stack_b)
 	len = ft_len_lst(*stack_b);
 	if (len < 2)
 		return ;
-	if (len == 2)
-	{
-		swap_b(stack_b);
-		return ;
-	}
 	dsp = *stack_b;
 	while (dsp->next)
 	{

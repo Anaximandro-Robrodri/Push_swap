@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	push_b(t_push **stack_a, t_push **stack_b)
+void	push_b(t_push **stack_a, t_push **stack_b) // DE A PASA AL STACK B
 {
 	t_push	*tmp;
 
@@ -12,7 +12,7 @@ void	push_b(t_push **stack_a, t_push **stack_b)
 	*stack_a = tmp;
 }
 
-void	push_a(t_push **stack_a, t_push **stack_b)
+void	push_a(t_push **stack_a, t_push **stack_b) // DE B PASA AL STACK A
 {
 	t_push	*tmp;
 

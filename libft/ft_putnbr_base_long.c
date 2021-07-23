@@ -6,7 +6,7 @@
 /*   By: jalvarad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 08:00:27 by jalvarad          #+#    #+#             */
-/*   Updated: 2021/06/14 18:16:21 by robrodri         ###   ########.fr       */
+/*   Updated: 2021/07/23 11:26:53 by robrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,6 @@ int	ft_putnbr_base_long(unsigned long long nbr, char *base)
 			ft_putnbr_base_long(nbr / a, base);
 			b = nbr % a;
 			write(1, &base[b], 1);
-			n++;
-		}
-		if (nbr < 0)
-		{
-			write(1, "-", 1);
-			ft_putnbr_base_long(-nbr, base);
 			n++;
 		}
 	}
