@@ -12,13 +12,11 @@ typedef struct s_push
 	struct	s_push	*next;
 }	t_push;
 
-int		main (int argc, char **argv);
 int 	ft_is_space (char a);
 int 	ft_is_sign (char a);
 int		ft_split_len(char **str);
 long	ft_atoi_plus(char *str);
 void	ft_error(int i);
-void	ft_print_success(int i, t_push *stack_a);
 
 //////////////////////////////////////////////////////////////
 // LST FUNCTIONS
@@ -46,6 +44,9 @@ void	push_a(t_push **stack_a, t_push **stack_b);
 //OPERATIONS ORDER
 void	ft_order(t_push **stack_a, t_push **stack_b);
 void	ft_three_num(t_push **a);
-void	ft_five_num(t_push **a, t_push **b, int len);
+void	ft_long_num(t_push **a, t_push **b, int len);
+int		ft_pivot(t_push *stack, int len);
+void	ft_sort_a(t_push **a, t_push **b, int pivot);
+void	ft_sort_b(t_push **a, t_push **b, int pivot);
 
 #endif

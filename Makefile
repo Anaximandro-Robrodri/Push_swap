@@ -7,7 +7,8 @@ SRC =	push_swap.c \
 		push_swap_lst_utils.c \
 		push_swap_moves.c \
 		push_swap_moves_2.c \
-		push_swap_order.c
+		push_swap_order.c \
+		push_swap_order_2.c
 
 OBJS = $(SRC:.c=.o)
 

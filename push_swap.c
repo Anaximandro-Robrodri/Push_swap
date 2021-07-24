@@ -77,6 +77,7 @@ int	main (int argc, char **argv)
 	ft_check_equals(stack_a);
 	ft_order(&stack_a, &stack_b);
 //	print_list(stack_a);
+//	print_list(stack_b);
 //	system("leaks a.out");
 	return(0);
 }
