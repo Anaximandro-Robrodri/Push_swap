@@ -58,22 +58,22 @@ void	ft_check_equals(t_push *stack_a)
 
 int	check_success(t_push *stack_a)
 {
-	t_push	*ret;
 	t_push	*tmp;
+	t_push	*aux;
 	int		len;
 
 	len = ft_len_lst(stack_a);
-	ret = stack_a;
+	aux = stack_a;
 	while (len--)
 	{
-		tmp = stack_a->next;
+		tmp = aux->next;
 		while (tmp)
 		{
-			if (stack_a->num > tmp->num)
+			if (aux->num > tmp->num)
 				return(0);
 			tmp = tmp->next;
 		}
-		stack_a = stack_a->next;
+		aux = aux->next;
 	}
 	return (1);
 }

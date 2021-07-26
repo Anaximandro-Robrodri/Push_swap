@@ -44,9 +44,10 @@ void	push_a(t_push **stack_a, t_push **stack_b);
 //OPERATIONS ORDER
 void	ft_order(t_push **stack_a, t_push **stack_b);
 void	ft_three_num(t_push **a);
-void	ft_long_num(t_push **a, t_push **b, int len);
+void	ft_long_num(t_push **a, t_push **b);
 int		ft_pivot(t_push *stack, int len);
-void	ft_sort_a(t_push **a, t_push **b, int pivot);
-void	ft_sort_b(t_push **a, t_push **b, int pivot);
+int		find_high(t_push *stack);
+int		find_low(t_push	*stack);
+int		find_half(t_push *stack, int num);
 
 #endif
