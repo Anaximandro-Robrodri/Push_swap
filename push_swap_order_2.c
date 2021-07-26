@@ -5,6 +5,8 @@ int		find_half(t_push *stack, int num)
 	int		len;
 	t_push	*tmp;
 
+	if (!stack)
+		return (0);
 	tmp = stack;
 	len = ft_len_lst(stack) / 2;
 	while (len--)
@@ -21,6 +23,8 @@ int		find_high(t_push *stack)
 	t_push	*aux;
 	int		high;
 
+	if (!stack)
+		return (0);
 	aux = stack;
 	high = aux->num;
 	while (aux)
@@ -37,6 +41,8 @@ int		find_low(t_push	*stack)
 	t_push	*aux;
 	int		low;
 
+	if (!stack)
+		return (0);
 	aux = stack;
 	low = aux->num;
 	while (aux)
@@ -53,7 +59,10 @@ int		ft_pivot(t_push *stack, int len)
 	int		pivot;
 	t_push	*tmp;
 
+	if (!stack)
+		return (0);
 	tmp = stack;
+	len = (len / 2) + 1;
 	while(len--)
 	{
 		pivot = tmp->num;

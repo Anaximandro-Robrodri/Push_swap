@@ -52,8 +52,6 @@ void	ft_serious_sorting_b(t_push **a, t_push **b)
 		else
 			reverse_rotate(b, 0);
 	}
-//	print_list(*b);
-//	printf("-------------------\n");
 	if (check_success(*a) == 0)
 		ft_serious_sorting(a, b);
 	push_a(a, b);
@@ -74,14 +72,12 @@ void	ft_serious_sorting(t_push **a, t_push **b)
 			push_b(a, b);
 		else if ((*a)->num > pivot)
 		{
-			if (find_half(*a, find_low(*a)) == 1)	
+			if (find_half(*a, find_low(*a)) == 1)
 				rotate(a, 1);
 			else
 				reverse_rotate(a, 1);
 		}
 	}
-//	print_list(*b);
-//	printf("-------------------\n");
 	if (check_success(*a) == 0)
 		ft_serious_sorting(a, b);
 	ft_serious_sorting_b(a, b);
