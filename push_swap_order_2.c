@@ -47,3 +47,17 @@ int		find_low(t_push	*stack)
 	}
 	return (low);
 }
+
+int		ft_pivot(t_push *stack, int len)
+{
+	int		pivot;
+	t_push	*tmp;
+
+	tmp = stack;
+	while(len--)
+	{
+		pivot = tmp->num;
+		tmp = tmp->next;
+	}
+	return (pivot);
+}

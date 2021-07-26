@@ -41,6 +41,52 @@ void	ft_long_num(t_push **a, t_push **b)
 		push_a(a, b);
 }
 
+void	ft_serious_sorting_b(t_push **a, t_push **b)
+{
+	if ((*b) == NULL)
+		return ;
+	while ((*b)->num != find_high(*b))
+	{
+		if (find_half(*b, find_high(*b)) == 1)
+			rotate(b, 0);
+		else
+			reverse_rotate(b, 0);
+	}
+//	print_list(*b);
+//	printf("-------------------\n");
+	if (check_success(*a) == 0)
+		ft_serious_sorting(a, b);
+	push_a(a, b);
+	while (ft_len_lst(*b))
+		ft_serious_sorting_b(a, b);
+}
+
+void	ft_serious_sorting(t_push **a, t_push **b)
+{
+	int		pivot;
+
+	if ((*a) == NULL)
+		return ;
+	pivot = ft_pivot(*a, ft_len_lst(*a));
+	while ((*a)->num != pivot)
+	{
+		if ((*a)->num < pivot)
+			push_b(a, b);
+		else if ((*a)->num > pivot)
+		{
+			if (find_half(*a, find_low(*a)) == 1)	
+				rotate(a, 1);
+			else
+				reverse_rotate(a, 1);
+		}
+	}
+//	print_list(*b);
+//	printf("-------------------\n");
+	if (check_success(*a) == 0)
+		ft_serious_sorting(a, b);
+	ft_serious_sorting_b(a, b);
+}
+
 void	ft_order(t_push	**stack_a, t_push **stack_b)
 {
 	int	len;
@@ -54,4 +100,6 @@ void	ft_order(t_push	**stack_a, t_push **stack_b)
 		ft_three_num(stack_a);
 	else if (len <= 5)
 		ft_long_num(stack_a, stack_b);
+	else
+		ft_serious_sorting(stack_a, stack_b);
 }

@@ -32,7 +32,7 @@ int	ft_len_lst(t_push *stack_a)
 	while (aux)
 	{
 		aux = aux->next;
-		i++;	
+		i++;
 	}
 	return (i);
 }
@@ -62,6 +62,8 @@ int	check_success(t_push *stack_a)
 	t_push	*aux;
 	int		len;
 
+	if (!stack_a)
+		return (1);
 	len = ft_len_lst(stack_a);
 	aux = stack_a;
 	while (len--)
@@ -76,18 +78,4 @@ int	check_success(t_push *stack_a)
 		aux = aux->next;
 	}
 	return (1);
-}
-
-int		ft_pivot(t_push *stack, int len)
-{
-	int		pivot;
-	t_push	*tmp;
-
-	tmp = stack;
-	while(len--)
-	{
-		pivot = tmp->num;
-		tmp = tmp->next;
-	}
-	return (pivot);
 }

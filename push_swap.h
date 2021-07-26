@@ -49,5 +49,7 @@ int		ft_pivot(t_push *stack, int len);
 int		find_high(t_push *stack);
 int		find_low(t_push	*stack);
 int		find_half(t_push *stack, int num);
+void	ft_serious_sorting(t_push **a, t_push **b);
+void	ft_serious_sorting_b(t_push **a, t_push **b);
 
 #endif

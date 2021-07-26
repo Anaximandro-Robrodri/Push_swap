@@ -6,7 +6,7 @@
 #    By: robrodri <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/31 11:50:54 by robrodri          #+#    #+#              #
-#    Updated: 2021/05/31 12:43:23 by robrodri         ###   ########.fr        #
+#    Updated: 2021/07/26 12:35:19 by robrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,8 @@ SRCS	=	ft_atoi.c \
 			ft_putendl.c \
 			ft_strmapi.c \
 			ft_putnbr_base.c \
-			ft_putnbr_base_long.c
+			ft_putnbr_base_long.c \
+
 
 SRCS_BONUS	= ft_lstnew.c ft_lstadd_back.c ft_lstadd_front.c ft_lstsize.c \
 ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_lstlast.c
