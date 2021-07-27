@@ -73,9 +73,19 @@ void	ft_serious_sorting(t_push **a, t_push **b)
 		else if ((*a)->num > pivot)
 		{
 			if (find_half(*a, find_low(*a)) == 1)
-				rotate(a, 1);
+			{
+				if (find_half(*b, find_high(*b)) == 1)
+					rr(a, b);
+				else
+					rotate(a, 1);
+			}
 			else
-				reverse_rotate(a, 1);
+			{
+				if (find_half(*b, find_high(*b)) == 0)
+					rrr(a, b);
+				else
+					reverse_rotate(a, 1);
+			}
 		}
 	}
 	if (check_success(*a) == 0)
