@@ -62,7 +62,6 @@ int		ft_pivot(t_push *stack, int len)
 	if (!stack)
 		return (0);
 	tmp = stack;
-	len = (len / 2) + 1;
 	while(len--)
 	{
 		pivot = tmp->num;

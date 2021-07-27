@@ -65,7 +65,7 @@ void	ft_serious_sorting(t_push **a, t_push **b)
 
 	if ((*a) == NULL)
 		return ;
-	pivot = ft_pivot(*a, ft_len_lst(*a));
+	pivot = ft_pivot(*a, (ft_len_lst(*a) / 2) + 1);
 	while ((*a)->num != pivot)
 	{
 		if ((*a)->num < pivot)
