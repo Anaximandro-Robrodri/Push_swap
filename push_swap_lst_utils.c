@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-t_push	*create_new_node(int num)
+t_push	*create_new_node(int *num)
 {
 	t_push	*node;
 
@@ -17,7 +17,7 @@ void	print_list(t_push *stack_a)
 {
 	while (stack_a)
 	{
-		printf("%d\n", stack_a->num);
+		printf("%d\n", (int)*(stack_a->num));
 		stack_a = stack_a->next;
 	}
 }
@@ -43,13 +43,16 @@ void	ft_check_equals(t_push *stack_a)
 	int		len;
 
 	len = ft_len_lst(stack_a);
-	while (len--)
+	while (stack_a)
 	{
 		tmp = stack_a->next;
 		while (tmp)
 		{
-			if (stack_a->num == tmp->num)
+			if (*stack_a->num == *tmp->num)
+			{
+				printf("heyyyy\n **%d**     ****%d****", *stack_a->num, *tmp->num);
 				ft_error(0);
+			}
 			tmp = tmp->next;
 		}
 		stack_a = stack_a->next;
@@ -71,7 +74,7 @@ int	check_success(t_push *stack_a)
 		tmp = aux->next;
 		while (tmp)
 		{
-			if (aux->num > tmp->num)
+			if (*aux->num > *tmp->num)
 				return(0);
 			tmp = tmp->next;
 		}

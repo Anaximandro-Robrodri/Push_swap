@@ -40,7 +40,7 @@ long	ft_atoi_plus (char *str)
 		str++;
 	}
 	while (ft_isdigit(*str))
-		nb = nb * 10 + *str++ - '0';
+		nb = (nb * 10) + (*str++ - '0');
 	if (!ft_is_space(*str) && *str)
 		ft_error(0);
 	nb *= sign;

@@ -8,7 +8,7 @@
 
 typedef struct s_push
 {
-	int				num;
+	int				*num;
 	struct	s_push	*next;
 }	t_push;
 
@@ -21,11 +21,11 @@ void	ft_error(int i);
 //////////////////////////////////////////////////////////////
 // LST FUNCTIONS
 
-t_push	*create_new_node(int num);
+t_push	*create_new_node(int *num);
 void	print_list(t_push	*stack_a);
 int		ft_len_lst(t_push *stack_a);
 void	ft_check_equals(t_push *stack_a);
-void	ft_store_args(t_push **stack, int num);
+void	ft_store_args(t_push **stack, int *num);
 int		check_success(t_push *stack_a);
 
 /////////////////////////////////////////////////////////////

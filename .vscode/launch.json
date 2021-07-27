@@ -5,17 +5,16 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "gcc - Compilar y depurar el archivo activo",
+			"name": "(lldb) Iniciar",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/a.out",
-			"args": [],
+			"program": "${workspaceFolder}/push_swap",
+			"args": ["1", "5", "0", "3"],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],
-			"externalConsole": false,
-			"MIMode": "lldb",
-			"preLaunchTask": "C/C++: gcc compilar archivo activo"
+			"externalConsole": true,
+			"MIMode": "lldb"
 		}
 	]
 }

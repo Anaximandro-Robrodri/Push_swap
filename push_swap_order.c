@@ -2,18 +2,18 @@
 
 void	ft_three_num (t_push **a)
 {
-	if (((*a)->num > (*a)->next->num)
-			&& ((*a)->num > (*a)->next->next->num))
+	if ((*(*a)->num > *(*a)->next->num)
+			&& (*(*a)->num > *(*a)->next->next->num))
 		rotate(a, 1);
-	if (((*a)->num > (*a)->next->num)
-			&& ((*a)->num < (*a)->next->next->num))
+	if ((*(*a)->num > *(*a)->next->num)
+			&& (*(*a)->num < *(*a)->next->next->num))
 		swap(a, 1);
-	if (((*a)->num < (*a)->next->num)
-			&& ((*a)->next->num > (*a)->next->next->num))
+	if ((*(*a)->num < *(*a)->next->num)
+			&& (*(*a)->next->num > *(*a)->next->next->num))
 		reverse_rotate(a, 1);
 	{
-		if (((*a)->num > (*a)->next->num)
-			&& ((*a)->num < (*a)->next->next->num))
+		if ((*(*a)->num > *(*a)->next->num)
+			&& (*(*a)->num < *(*a)->next->next->num))
 		swap(a, 1);
 	}
 }
@@ -22,9 +22,9 @@ void	ft_long_num(t_push **a, t_push **b)
 {
 	while (ft_len_lst(*a) > 3)
 	{
-		while ((*a)->num != find_low(*a))
+		while (*(*a)->num != find_low(*a))
 		{
-			if (find_half(*a, find_low(*a)) == 1) 	
+			if (find_half(*a, find_low(*a)) == 1)
 				rotate(a, 1);
 			else
 				reverse_rotate(a, 1);
@@ -34,7 +34,7 @@ void	ft_long_num(t_push **a, t_push **b)
 	ft_three_num(a);
 	if (ft_len_lst(*b) > 1)
 	{
-		if ((*b)->num < (*b)->next->num)
+		if (*(*b)->num < *(*b)->next->num)
 				swap(b, 0);
 	}
 	while (*b)
@@ -45,7 +45,7 @@ void	ft_serious_sorting_b(t_push **a, t_push **b)
 {
 	if ((*b) == NULL)
 		return ;
-	while ((*b)->num != find_high(*b))
+	while (*(*b)->num != find_high(*b))
 	{
 		if (find_half(*b, find_high(*b)) == 1)
 			rotate(b, 0);
@@ -66,11 +66,11 @@ void	ft_serious_sorting(t_push **a, t_push **b)
 	if ((*a) == NULL)
 		return ;
 	pivot = ft_pivot(*a, (ft_len_lst(*a) / 2) + 1);
-	while ((*a)->num != pivot)
+	while (*(*a)->num != pivot)
 	{
-		if ((*a)->num < pivot)
+		if (*(*a)->num < pivot)
 			push_b(a, b);
-		else if ((*a)->num > pivot)
+		else if (*(*a)->num > pivot)
 		{
 			if (find_half(*a, find_low(*a)) == 1)
 			{

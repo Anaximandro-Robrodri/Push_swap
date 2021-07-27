@@ -3,90 +3,79 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/30 15:55:44 by robrodri          #+#    #+#             */
-/*   Updated: 2021/05/30 15:55:45 by robrodri         ###   ########.fr       */
+/*   Created: 2021/05/21 13:03:04 by crisfern          #+#    #+#             */
+/*   Updated: 2021/06/03 09:36:11 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-static char	**ft_allocate(char **dst)
-{
-	dst = ft_calloc (1, sizeof(char **));
-	return (dst);
-}
 
-static void	ft_put_str (char **dst, char *src, int n, char c)
+static int	get_nwords(char const *s, char c)
 {
-	char	*aux;
-	int		i;
+	int	nwords;
 
-	if (n == 1)
-		dst[0] = ft_strdup(src);
-	else
+	nwords = 0;
+	if (!*s)
+		return (0);
+	while (*s)
 	{
-		i = 0;
-		while (i < n - 1)
+		if (*s == c)
 		{
-			aux = ft_strchr(src, c);
-			dst[i] = ft_substr(src, 0, (aux - src));
-			while (*aux == c)
-				aux++;
-			src = aux;
-			i++;
+			nwords++;
+			while (*s == c)
+				s++;
 		}
-		dst[i] = ft_strdup(aux);
+		else
+			s++;
 	}
+	nwords++;
+	return (nwords);
 }
 
-static int	ft_num_words(char const *s, char c)
+static void	save_words(char **ptr, char *str, char c, int nwords)
 {
-	int	i;
-	int	n;
-	int	flag;
+	int		i;
+	char	*aux;
 
 	i = 0;
-	n = 0;
-	flag = 0;
-	while (s[i] != '\0')
+	if ((nwords > 0) && *str)
 	{
-		if (s[i] == c)
-			flag = 0;
-		else if (flag == 0)
+		while (i < (nwords - 1))
 		{
-			flag = 1;
-			n++;
+			aux = ft_strchr(str, c);
+			ptr[i++] = ft_substr(str, 0, aux - str);
+			while (*aux == c)
+				aux++;
+			str = aux;
 		}
-		i++;
+		ptr[i++] = ft_strdup(str);
+		ptr[i] = 0;
 	}
-	return (n);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char		*trim;
-	char		**str_mother;
-	int			n;
+	int		nwords;
+	char	**ptr;
+	char	*str;
+	char	d[2];
 
-	if (s == 0)
-		return (0);
-	str_mother = NULL;
-	if (*s == 0)
-		return (ft_allocate(str_mother));
-	trim = ft_strtrim (s, &c);
-	if (trim == 0)
-		return (0);
-	n = ft_num_words(trim, c);
-	if (n == 0)
+	d[0] = c;
+	d[1] = '\0';
+	if (s)
 	{
-		free (trim);
-		return (ft_allocate(str_mother));
+		str = ft_strtrim(s, d);
+		if (str)
+		{
+			nwords = get_nwords(str, c);
+			ptr = ft_calloc((nwords + 1), sizeof(char *));
+			if (ptr)
+				save_words(ptr, str, c, nwords);
+			free(str);
+			return (ptr);
+		}
 	}
-	str_mother = ft_calloc((n + 1), (sizeof (char **)));
-	if (str_mother == 0)
-		return (0);
-	ft_put_str (str_mother, trim, n, c);
-	free (trim);
-	return (str_mother);
+	return (0);
 }

@@ -15,7 +15,7 @@ static	void	ft_error_control(int i, char **argv)
 	flag = 0;
 	while (argv[i][pos])
 	{
-		if (!ft_isdigit(argv[i][pos]) && !ft_is_space(argv[i][pos]) 
+		if (!ft_isdigit(argv[i][pos]) && !ft_is_space(argv[i][pos])
 				&& !ft_is_sign(argv[i][pos]))
 				ft_error(0);
 		if (ft_isdigit(argv[i][pos]))
@@ -26,7 +26,7 @@ static	void	ft_error_control(int i, char **argv)
 		ft_error(0);
 }
 
-void	ft_store_args(t_push **stack, int num)
+void	ft_store_args(t_push **stack, int *num)
 {
 	t_push	*tmp;
 
@@ -42,7 +42,7 @@ void	ft_store_args(t_push **stack, int num)
 
 static	t_push	*ft_args(int argc, char **argv, t_push *stack_a)
 {
-	int		num;
+	int		*num;
 	char	**split;
 	int		len;
 
@@ -53,7 +53,10 @@ static	t_push	*ft_args(int argc, char **argv, t_push *stack_a)
 		len = ft_split_len(split);
 		while (len--)
 		{
-			num = ft_atoi_plus(split[len]);
+			num = malloc(sizeof(int));
+			if (!num)
+				return (0);
+			*num = ft_atoi_plus(split[len]);
 			free(split[len]);
 			ft_store_args(&stack_a, num);
 		}
@@ -76,9 +79,9 @@ int	main (int argc, char **argv)
 		ft_error(0);
 	ft_check_equals(stack_a);
 	ft_order(&stack_a, &stack_b);
-	print_list(stack_a);
+//	print_list(stack_a);
 //	printf("-------------\n");
 //	print_list(stack_b);
-	system("leaks push_swap");
+// system("leaks push_swap");
 	return(0);
 }
