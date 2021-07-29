@@ -27,6 +27,7 @@ int		ft_len_lst(t_push *stack_a);
 void	ft_check_equals(t_push *stack_a);
 void	ft_store_args(t_push **stack, int *num);
 int		check_success(t_push *stack_a);
+int		check_descending(t_push *stack_a);
 
 /////////////////////////////////////////////////////////////
 //MOVEMENTS
