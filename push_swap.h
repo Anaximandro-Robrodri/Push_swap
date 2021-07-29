@@ -27,6 +27,7 @@ int		ft_len_lst(t_push *stack_a);
 void	ft_check_equals(t_push *stack_a);
 void	ft_store_args(t_push **stack, int *num);
 int		check_success(t_push *stack_a);
+int		check_descending(t_push *b);
 
 /////////////////////////////////////////////////////////////
 //MOVEMENTS
@@ -48,8 +49,11 @@ void	ft_long_num(t_push **a, t_push **b);
 int		ft_pivot(t_push *stack, int len);
 int		find_high(t_push *stack);
 int		find_low(t_push	*stack);
+int		find_second_low(t_push *stack, int low);
 int		find_half(t_push *stack, int num);
 void	ft_serious_sorting(t_push **a, t_push **b);
 void	ft_serious_sorting_b(t_push **a, t_push **b);
+int     ft_find_half_pivot(t_push *stack, int pivot);
+int     where_is_pivot(t_push *stack, int pivot, int low);
 
 #endif

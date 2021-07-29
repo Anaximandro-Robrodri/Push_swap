@@ -49,10 +49,7 @@ void	ft_check_equals(t_push *stack_a)
 		while (tmp)
 		{
 			if (*stack_a->num == *tmp->num)
-			{
-				printf("heyyyy\n **%d**     ****%d****", *stack_a->num, *tmp->num);
 				ft_error(0);
-			}
 			tmp = tmp->next;
 		}
 		stack_a = stack_a->next;

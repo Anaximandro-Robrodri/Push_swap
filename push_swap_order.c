@@ -43,19 +43,24 @@ void	ft_long_num(t_push **a, t_push **b)
 
 void	ft_serious_sorting_b(t_push **a, t_push **b)
 {
+	int		pivot;
+
 	if ((*b) == NULL)
 		return ;
-	while (*(*b)->num != find_high(*b))
+	pivot = ft_pivot(*b, (ft_len_lst(*b) / 2) + 1);
+	while (*(*b)->num != pivot)
 	{
-		if (find_half(*b, find_high(*b)) == 1)
-			rotate(b, 0);
+		if (*(*b)->num > pivot)
+			push_a(a, b);
 		else
-			reverse_rotate(b, 0);
+		{
+			if (find_half(*b, find_high(*b)) == 1)
+				rotate(b, 0);
+			else
+				reverse_rotate(b, 0);
+		}
 	}
-	if (check_success(*a) == 0)
-		ft_serious_sorting(a, b);
-	push_a(a, b);
-	while (ft_len_lst(*b))
+	if (check_descending(*b) == 0)
 		ft_serious_sorting_b(a, b);
 }
 
@@ -88,6 +93,7 @@ void	ft_serious_sorting(t_push **a, t_push **b)
 			}
 		}
 	}
+
 	if (check_success(*a) == 0)
 		ft_serious_sorting(a, b);
 	ft_serious_sorting_b(a, b);
