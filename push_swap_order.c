@@ -170,11 +170,20 @@ void	ft_serious_sorting(t_push **a, t_push **b, int chunk)
 	}
 }*/
 
+void	ft_serious_sorting(t_push **a, t_push **b, long **chunk, int chunk_l)
+{
+//	int	i;
+//	int	a;
+
+//	i = chunk_l - 1;
+	printf("funciona %d\n", check_chunky(chunk[0], 10));
+}
+
 void	ft_order(t_push	**stack_a, t_push **stack_b)
 {
 	int	len;
 	int	*array;
-	int **chunk;
+	long **chunk;
 
 	if (check_success(*stack_a) == 1)
 		return ;
@@ -189,10 +198,7 @@ void	ft_order(t_push	**stack_a, t_push **stack_b)
 	{
 		array = bubble(*stack_a);
 		chunk = get_chunky(array, len, (len / 11));
-		int i = 0;
-		while (i < 10)
-			printf("%d\n", chunk[10][i++]);
-	//	ft_serious_sorting(stack_a, stack_b);
+		ft_serious_sorting(stack_a, stack_b, chunk, 11);
 		free(array);
 		free(chunk);
 	}

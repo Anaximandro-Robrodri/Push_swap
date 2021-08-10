@@ -51,11 +51,12 @@ int		find_high(t_push *stack);
 int		find_low(t_push	*stack);
 int		find_second_low(t_push *stack, int low);
 int		find_half(t_push *stack, int num);
-void	ft_serious_sorting(t_push **a, t_push **b);
+void	ft_serious_sorting(t_push **a, t_push **b, long **chunk, int chunk_l);
 void	ft_serious_sorting_b(t_push **a, t_push **b);
 int		ft_who_is_closer(t_push *a, int first, int second);
 int 	*ft_sort_int_tab(int *tab, int size);
 int 	*bubble(t_push *s);
-int		**get_chunky(int *array, int len, int size);
+long	**get_chunky(int *array, int len, int size);
+int		check_chunky(long *array, int nbr);
 
 #endif
