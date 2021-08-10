@@ -4,6 +4,7 @@ NAME = push_swap.a
 
 SRC =	push_swap.c \
 		push_swap_utils.c \
+		push_swap_utils_2.c \
 		push_swap_lst_utils.c \
 		push_swap_moves.c \
 		push_swap_moves_2.c \
@@ -23,12 +24,7 @@ $(NAME): $(OBJS)
 	cp libft/libft.a $(NAME)
 	$(CC) $(FLAGS) -c $(SRC)
 	ar rc $(NAME) $(OBJS)
-<<<<<<< HEAD
-	CC $(NAME) -o push_swap 
-	#-g3 -fsanitize=address
-=======
-	CC $(NAME) -o push_swap
->>>>>>> 374f78e
+	CC $(NAME) -o push_swap -g -fsanitize=address
 
 clean:
 	$(MAKE) clean -C ./libft
@@ -41,4 +37,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all re m clean fclean bonus
-

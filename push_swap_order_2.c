@@ -54,11 +54,11 @@ int		find_low(t_push	*stack)
 	return (low);
 }
 
-/*int		find_second_low(t_push *stack, int low)
+int		find_second_low(t_push *stack, int low)
 {
 	t_push	*aux;
 	int 	second;
-	
+
 	if (!stack)
 		return (0);
 	aux = stack;
@@ -73,7 +73,7 @@ int		find_low(t_push	*stack)
 		aux = aux->next;
 	}
 	return (second);
-}*/
+}
 
 /*int		ft_find_half_pivot(t_push *stack, int pivot)
 {
@@ -130,7 +130,7 @@ int		ft_pivot(t_push *stack, int len)
 	return (pivot);
 }
 
-int		check_descending(t_push *b)
+int		check_success_b(t_push *b)
 {
 	t_push	*tmp;
 	t_push	*aux;
@@ -151,5 +151,61 @@ int		check_descending(t_push *b)
 		}
 		aux = aux->next;
 	}
-	return (1);	
+	return (1);
+}
+
+int		ft_who_is_closer(t_push *a, int first, int second)
+{
+	t_push	*aux;
+	int		i;
+	int		j;
+
+	aux = a;
+	i = 0;
+	while (aux)
+	{
+		if (*aux->num == first)
+			break ;
+		aux = aux->next;
+		i++;
+	}
+	aux = a;
+	j = 0;
+	while (aux)
+	{
+		if (*aux->num == second)
+			break ;
+		aux = aux->next;
+		j++;
+	}
+	if (find_half(a, first) == 1 && find_half(a, second) == 1)
+	{
+		if (i < j)
+			return (1);
+		else
+			return (0);
+	}
+	else if (find_half(a, first) == 0 && find_half(a, second) == 0)
+	{
+		if (i > j)
+			return (1);
+		else
+			return (0);
+	}
+	else if (find_half(a, first) == 1 && find_half(a, second) == 0)
+	{
+		j -= ft_len_lst(a);
+		if (i < j)
+			return (1);
+		else
+			return(0);
+	}
+	else
+	{
+		i -= ft_len_lst(a);
+		if (i < j)
+			return (1);
+		else
+			return(0);
+	}
 }

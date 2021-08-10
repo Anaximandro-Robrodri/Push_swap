@@ -27,11 +27,7 @@ int		ft_len_lst(t_push *stack_a);
 void	ft_check_equals(t_push *stack_a);
 void	ft_store_args(t_push **stack, int *num);
 int		check_success(t_push *stack_a);
-<<<<<<< HEAD
-int		check_descending(t_push *b);
-=======
-int		check_descending(t_push *stack_a);
->>>>>>> 374f78e
+int		check_success_b(t_push *b);
 
 /////////////////////////////////////////////////////////////
 //MOVEMENTS
@@ -57,7 +53,9 @@ int		find_second_low(t_push *stack, int low);
 int		find_half(t_push *stack, int num);
 void	ft_serious_sorting(t_push **a, t_push **b);
 void	ft_serious_sorting_b(t_push **a, t_push **b);
-int     ft_find_half_pivot(t_push *stack, int pivot);
-int     where_is_pivot(t_push *stack, int pivot, int low);
+int		ft_who_is_closer(t_push *a, int first, int second);
+int 	*ft_sort_int_tab(int *tab, int size);
+int 	*bubble(t_push *s);
+int		**get_chunky(int *array, int len);
 
 #endif

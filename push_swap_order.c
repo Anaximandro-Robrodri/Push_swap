@@ -41,55 +41,26 @@ void	ft_long_num(t_push **a, t_push **b)
 		push_a(a, b);
 }
 
-void	ft_serious_sorting_b(t_push **a, t_push **b)
+// INSERTION MODE -> FCKG SHIIIIIT
+/*void	ft_serious_sorting_b(t_push **a, t_push **b)
 {
-	int		pivot;
-
 	if ((*b) == NULL)
 		return ;
-<<<<<<< HEAD
-	pivot = ft_pivot(*b, (ft_len_lst(*b) / 2) + 1);
-	while (*(*b)->num != pivot)
-=======
-	if (check_descending(*b) == 1)
-		return ;
-	pivot = ft_pivot(*b, (ft_len_lst(*b) / 2) + 1);
-	while (*(*b)->num != pivot)
+	while (*(*b)->num != find_high(*b))
 	{
-		if (*(*b)->num > pivot)
-			push_a(a, b);
+		if (find_half(*b, find_high(*b)) == 1)
+			rotate(b, 0);
 		else
-		{
-			printf("pivot %d\n", pivot);
-			rotate(a, 0);
-		}
+			reverse_rotate(b, 0);
 	}
-/*	while (*(*b)->num != find_high(*b))
->>>>>>> 374f78e
-	{
-		if (*(*b)->num > pivot)
-			push_a(a, b);
-		else
-		{
-			if (find_half(*b, find_high(*b)) == 1)
-				rotate(b, 0);
-			else
-				reverse_rotate(b, 0);
-		}
-	}
-<<<<<<< HEAD
-	if (check_descending(*b) == 0)
-		ft_serious_sorting_b(a, b);
-=======
 	if (check_success(*a) == 0)
 		ft_serious_sorting(a, b);
 	push_a(a, b);
 	while (ft_len_lst(*b))
-		ft_serious_sorting_b(a, b);*/
->>>>>>> 374f78e
-}
+		ft_serious_sorting_b(a, b);
+}*/
 
-void	ft_serious_sorting(t_push **a, t_push **b)
+/*void	ft_serious_sorting(t_push **a, t_push **b)
 {
 	int		pivot;
 
@@ -120,21 +91,90 @@ void	ft_serious_sorting(t_push **a, t_push **b)
 			}
 		}
 	}
-<<<<<<< HEAD
-
 	if (check_success(*a) == 0)
-=======
-	if (check_success(*a) == 0 || check_descending(*b) == 0)
-	{
->>>>>>> 374f78e
 		ft_serious_sorting(a, b);
-		ft_serious_sorting_b(a, b);
+	ft_serious_sorting_b(a, b);
+	}
+}*/
+
+/*void	ft_serious_sorting_b(t_push **a, t_push **b)
+{
+	int	high;
+
+	high = find_high(*b);
+	while (*(*b)->num != high)
+	{
+		if (find_half(*b, high) == 1)
+			rotate(b, 0);
+		else
+			reverse_rotate(b, 0);
 	}
 }
+
+void	ft_serious_sorting(t_push **a, t_push **b, int chunk)
+{
+	int	i;
+	int	low;
+	int	second;
+
+	i = 0;
+	while (i < chunk)
+	{
+		low = find_low(*a);
+		second = find_second_low(*a, low);
+		if (find_low(*a) < chunk)
+		{
+			if (ft_who_is_closer(*a, low, second) == 1)
+			{
+				if (find_half(*a, low) == 1)
+				{
+					while (*(*a)->num != low)
+						rotate(a, 1);
+				}
+				else
+				{
+					while (*(*a)->num != low)
+						reverse_rotate(a, 1);
+				}
+			}
+			else
+			{
+				if (find_half(*a, second) == 1)
+				{
+					while (*(*a)->num != second)
+						rotate(a, 1);
+				}
+				else
+				{
+					while (*(*a)->num != second)
+						reverse_rotate(a, 1);
+				}
+			}
+		}
+		else
+		{
+			if (find_half(*a, low) == 1)
+				{
+					while (*(*a)->num != low)
+						rotate(a, 1);
+				}
+			else
+				{
+					while (*(*a)->num != low)
+						reverse_rotate(a, 1);
+				}
+		}
+		push_b(a, b);
+//		ft_serious_sorting_b(a, b);
+		i++;
+	}
+}*/
 
 void	ft_order(t_push	**stack_a, t_push **stack_b)
 {
 	int	len;
+	int	*array;
+	int **chunk;
 
 	if (check_success(*stack_a) == 1)
 		return ;
@@ -146,5 +186,14 @@ void	ft_order(t_push	**stack_a, t_push **stack_b)
 	else if (len <= 5)
 		ft_long_num(stack_a, stack_b);
 	else
-		ft_serious_sorting(stack_a, stack_b);
+	{
+		array = bubble(*stack_a);
+		chunk = get_chunky(array, len);
+		int i = 0;
+		while (i < 10)
+			printf("%d\n", chunk[9][i++]);
+	//	ft_serious_sorting(stack_a, stack_b);
+		free(array);
+		free(chunk);
+	}
 }

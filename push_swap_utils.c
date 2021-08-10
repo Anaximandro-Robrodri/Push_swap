@@ -42,9 +42,9 @@ long	ft_atoi_plus (char *str)
 	while (ft_isdigit(*str))
 		nb = (nb * 10) + (*str++ - '0');
 	if (!ft_is_space(*str) && *str)
-		ft_error(0);
+		ft_error(-1);
 	nb *= sign;
 	if (nb > INT_MAX || nb < INT_MIN)
-		ft_error(0);
+		ft_error(-1);
 	return (nb);
 }
