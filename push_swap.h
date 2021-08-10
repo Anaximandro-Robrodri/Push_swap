@@ -56,6 +56,6 @@ void	ft_serious_sorting_b(t_push **a, t_push **b);
 int		ft_who_is_closer(t_push *a, int first, int second);
 int 	*ft_sort_int_tab(int *tab, int size);
 int 	*bubble(t_push *s);
-int		**get_chunky(int *array, int len);
+int		**get_chunky(int *array, int len, int size);
 
 #endif

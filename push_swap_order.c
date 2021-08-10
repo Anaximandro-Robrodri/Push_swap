@@ -188,10 +188,10 @@ void	ft_order(t_push	**stack_a, t_push **stack_b)
 	else
 	{
 		array = bubble(*stack_a);
-		chunk = get_chunky(array, len);
+		chunk = get_chunky(array, len, (len / 11));
 		int i = 0;
 		while (i < 10)
-			printf("%d\n", chunk[9][i++]);
+			printf("%d\n", chunk[10][i++]);
 	//	ft_serious_sorting(stack_a, stack_b);
 		free(array);
 		free(chunk);

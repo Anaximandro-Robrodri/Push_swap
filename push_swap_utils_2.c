@@ -41,23 +41,31 @@ int *bubble(t_push *s)
     return (array);
 }
 
-int	**get_chunky(int *array, int len)
+int	**get_chunky(int *array, int len, int size)
 {
 	int	**chunk;
 	int	i;
 	int	j;
 	int c;
 
-	chunk = (int **)malloc(sizeof(int *) * 10);
+	chunk = (int **)malloc(sizeof(int *) * 11);
 	i = 0;
 	j = 0;
-	while (i < 10)
+	printf("size = %d\n", size);
+	while (i < 11)
 	{
 		c = 0;
-		chunk[i] = malloc(sizeof(int) * 10);
-		while (j < len && c < 10)
+		if (i == 10)
+		{
+			chunk[i] = malloc(sizeof(int) * (len - j));
+			size = len - j;
+		}
+		else
+			chunk[i] = malloc(sizeof(int) * size);
+		while (j < len && c < size)
 		{
 			chunk[i][c] = array[j];
+			printf("%d  %d\n", chunk[i][c], c);
 			j++;
 			c++;
 		}
