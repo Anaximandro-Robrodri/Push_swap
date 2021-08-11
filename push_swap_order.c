@@ -207,7 +207,7 @@ void	sort_b(t_push **a, t_push **b, long *chunk_1, long *chunk_2)
 	if ((*a) && !check_chunky(chunk_2, *(*a)->num)
 		&& !check_chunky(chunk_1, *(*a)->num) && check_chunky(chunk_1, *(*b)->num))
 			rr(a, b);
-	else
+	else if (check_chunky(chunk_1, *(*b)->num))
 		rotate(b, 0);
 }
 
@@ -216,7 +216,6 @@ void	ft_serious_sorting(t_push **a, t_push **b, long **chunk, int chunk_l)
 	int	i;
 	int	j;
 
-	// i es el de la mitad, a el siguiente
 	i = (chunk_l / 2) - 1;
 	j = i + 1;
 	while ((*a) && j < chunk_l)
@@ -234,8 +233,8 @@ void	ft_serious_sorting(t_push **a, t_push **b, long **chunk, int chunk_l)
 				|| check_chunky(chunk[j], *(*a)->num)))
 		{
 			push_b(a, b);
-//			if (ft_len_lst(*b) > 1)
-//				sort_b(a, b, chunk[i], chunk[j]);
+			if (ft_len_lst(*b) > 1)
+				sort_b(a, b, chunk[i], chunk[j]);
 		}
 		if ((*a) && !not_in_stack(*a, chunk[i]) && i > 0)
 			i--;
@@ -249,7 +248,9 @@ void	ft_order(t_push	**stack_a, t_push **stack_b)
 	int	len;
 	int	*array;
 	long **chunk;
+	int	chunk_l;
 
+	chunk_l = 0;
 	if (check_success(*stack_a) == 1)
 		return ;
 	len = ft_len_lst(*stack_a);
@@ -257,13 +258,17 @@ void	ft_order(t_push	**stack_a, t_push **stack_b)
 		swap(stack_a, 1);
 	else if (len == 3)
 		ft_three_num(stack_a);
-	else if (len <= 5)
+	else if (len <= 10)
 		ft_long_num(stack_a, stack_b);
 	else
 	{
+		if (len <= 100)
+			chunk_l = 11;
+		else if (len <= 500)
+			chunk_l = 24;
 		array = bubble(*stack_a);
-		chunk = get_chunky(array, len, (len / 11));
-		ft_serious_sorting(stack_a, stack_b, chunk, 11);
+		chunk = get_chunky(array, len, (len / chunk_l), chunk_l);
+		ft_serious_sorting(stack_a, stack_b, chunk, chunk_l);
 		ft_serious_sorting_b(stack_a, stack_b, array, len - 1);
 		free(array);
 		free(chunk);

@@ -58,7 +58,7 @@ void	ft_serious_sorting_b(t_push **a, t_push **b, int *array, int len);
 void	sort_b(t_push **a, t_push **b, long *chunk_1, long *chunk_2);
 int 	*ft_sort_int_tab(int *tab, int size);
 int 	*bubble(t_push *s);
-long	**get_chunky(int *array, int len, int size);
+long	**get_chunky(int *array, int len, int size, int chunk_l);
 int		check_chunky(long *array, int nbr);
 
 #endif
