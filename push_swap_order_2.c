@@ -75,45 +75,6 @@ int		find_second_low(t_push *stack, int low)
 	return (second);
 }
 
-/*int		ft_find_half_pivot(t_push *stack, int pivot)
-{
-	t_push *aux;
-	int		low;
-
-	if (!stack)
-		return (0);
-	aux = stack;
-	while (*aux->num != pivot)
-	{
-		if (*aux->num < pivot)
-			low = *aux->num;
-		aux = aux->next;
-	}
-	return (low);
-}
-
-int		where_is_pivot(t_push *stack, int pivot, int low)
-{
-	t_push	*aux;
-	int		i;
-
-	i = 0;
-	aux = stack;
-	while (*aux->num != pivot)
-	{
-		aux = aux->next;
-		i++;
-	}
-	aux = stack;
-	while (i--)
-	{
-		if (*aux->num == low)
-			return (1);
-		aux = aux->next;
-	}
-	return (0);
-}*/
-
 int		ft_pivot(t_push *stack, int len)
 {
 	int		pivot;
@@ -154,58 +115,32 @@ int		check_success_b(t_push *b)
 	return (1);
 }
 
-int		ft_who_is_closer(t_push *a, int first, int second)
+int	last_val(t_push *stack)
 {
 	t_push	*aux;
-	int		i;
-	int		j;
 
-	aux = a;
-	i = 0;
+	aux = stack;
+	while (aux->next)
+		aux = aux->next;
+	return (*aux->num);
+}
+
+int	not_in_stack(t_push *stack, long *chunk)
+{
+	t_push *aux;
+	int		i;
+
+	aux = stack;
 	while (aux)
 	{
-		if (*aux->num == first)
-			break ;
+		i = 0;
+		while (chunk[i] != 2147483648)
+		{
+			if (*aux->num == chunk[i])
+				return (1);
+			i++;
+		}
 		aux = aux->next;
-		i++;
 	}
-	aux = a;
-	j = 0;
-	while (aux)
-	{
-		if (*aux->num == second)
-			break ;
-		aux = aux->next;
-		j++;
-	}
-	if (find_half(a, first) == 1 && find_half(a, second) == 1)
-	{
-		if (i < j)
-			return (1);
-		else
-			return (0);
-	}
-	else if (find_half(a, first) == 0 && find_half(a, second) == 0)
-	{
-		if (i > j)
-			return (1);
-		else
-			return (0);
-	}
-	else if (find_half(a, first) == 1 && find_half(a, second) == 0)
-	{
-		j -= ft_len_lst(a);
-		if (i < j)
-			return (1);
-		else
-			return(0);
-	}
-	else
-	{
-		i -= ft_len_lst(a);
-		if (i < j)
-			return (1);
-		else
-			return(0);
-	}
+	return (0);
 }

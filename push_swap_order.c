@@ -170,13 +170,78 @@ void	ft_serious_sorting(t_push **a, t_push **b, int chunk)
 	}
 }*/
 
+void	ft_serious_sorting_b(t_push **a, t_push **b,  int *array, int len)
+{
+	int	i;
+
+	i = 0;
+	while ((*b) && len)
+	{
+		while (array[len] != *(*b)->num)
+		{
+			if ((*b)->next && array[len] == *(*b)->num)
+				swap(b, 0);
+			else
+			{
+				rotate(b, 0);
+				i++;
+			}
+		}
+		while (*b && array[len] == *(*b)->num)
+		{
+			push_a(a, b);
+			len--;
+		}
+		while (*b && i > 0)
+		{
+			reverse_rotate(b, 0);
+			i--;
+			if (array[len] == *(*b)->num)
+				break ;
+		}
+	}
+}
+
+void	sort_b(t_push **a, t_push **b, long *chunk_1, long *chunk_2)
+{
+	if ((*a) && !check_chunky(chunk_2, *(*a)->num)
+		&& !check_chunky(chunk_1, *(*a)->num) && check_chunky(chunk_1, *(*b)->num))
+			rr(a, b);
+	else
+		rotate(b, 0);
+}
+
 void	ft_serious_sorting(t_push **a, t_push **b, long **chunk, int chunk_l)
 {
-//	int	i;
-//	int	a;
+	int	i;
+	int	j;
 
-//	i = chunk_l - 1;
-	printf("funciona %d\n", check_chunky(chunk[0], 10));
+	// i es el de la mitad, a el siguiente
+	i = (chunk_l / 2) - 1;
+	j = i + 1;
+	while ((*a) && j < chunk_l)
+	{
+		while ((*a) && (!check_chunky(chunk[i], *(*a)->num)
+				&& !check_chunky(chunk[j], *(*a)->num)))
+		{
+			if (check_chunky(chunk[i], last_val(*a))
+				|| check_chunky(chunk[j], last_val(*a)))
+				reverse_rotate(a, 1);
+			else
+				rotate(a, 1);
+		}
+		while ((*a) && (check_chunky(chunk[i], *(*a)->num)
+				|| check_chunky(chunk[j], *(*a)->num)))
+		{
+			push_b(a, b);
+//			if (ft_len_lst(*b) > 1)
+//				sort_b(a, b, chunk[i], chunk[j]);
+		}
+		if ((*a) && !not_in_stack(*a, chunk[i]) && i > 0)
+			i--;
+		if ((*a) && !not_in_stack(*a, chunk[j]) && j < chunk_l - 1)
+			j++;
+	}
 }
 
 void	ft_order(t_push	**stack_a, t_push **stack_b)
@@ -199,6 +264,7 @@ void	ft_order(t_push	**stack_a, t_push **stack_b)
 		array = bubble(*stack_a);
 		chunk = get_chunky(array, len, (len / 11));
 		ft_serious_sorting(stack_a, stack_b, chunk, 11);
+		ft_serious_sorting_b(stack_a, stack_b, array, len - 1);
 		free(array);
 		free(chunk);
 	}

@@ -80,7 +80,6 @@ int	check_chunky(long *array, int nbr)
 	i = 0;
 	while (array[i] != 2147483648)
 	{
-		printf("He entrado\n");
 		if (array[i] == nbr)
 			return (1);
 		i++;
