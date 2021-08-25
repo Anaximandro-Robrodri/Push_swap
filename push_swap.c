@@ -80,9 +80,7 @@ int	main (int argc, char **argv)
 		ft_error(0);
 	ft_check_equals(stack_a);
 	ft_order(&stack_a, &stack_b);
-//	print_list(stack_a);
-//	printf("-------------\n");
-//	print_list(stack_b);
+//	print_list(stack_a, stack_b);
 //	 system("leaks push_swap");
 	return(0);
 }

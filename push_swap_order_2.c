@@ -8,7 +8,7 @@ int		find_half(t_push *stack, int num)
 	if (!stack)
 		return (0);
 	tmp = stack;
-	len = ft_len_lst(stack) / 2;
+	len = (ft_len_lst(stack) / 2);
 	while (len--)
 	{
 		if (num == *tmp->num)
@@ -54,93 +54,36 @@ int		find_low(t_push	*stack)
 	return (low);
 }
 
-int		find_second_low(t_push *stack, int low)
-{
-	t_push	*aux;
-	int 	second;
 
-	if (!stack)
-		return (0);
-	aux = stack;
-	if (*aux->num == low)
-		second = *aux->next->num;
-	else
-		second = *aux->num;
+static int	get_len(t_push *aux, int num)
+{
+	int	ret;
+
+	ret = 0;
 	while (aux)
 	{
-		if ((second > *aux->num) && (*aux->num != low))
-			second = *aux->num;
+		if(*aux->num == num)
+			break ;
 		aux = aux->next;
+		ret++;
 	}
-	return (second);
+	return(ret);
 }
 
-int		ft_pivot(t_push *stack, int len)
+int	smart_rotate(int high, int low, t_push *stack)
 {
-	int		pivot;
-	t_push	*tmp;
-
-	if (!stack)
-		return (0);
-	tmp = stack;
-	while(len--)
-	{
-		pivot = *tmp->num;
-		tmp = tmp->next;
-	}
-	return (pivot);
-}
-
-int		check_success_b(t_push *b)
-{
-	t_push	*tmp;
 	t_push	*aux;
-	int		len;
+	int	i;
+	int	j;
+	int	len;
 
-	if (!b)
+	aux = stack;
+	i = get_len(aux, high);
+	j = get_len(aux, low);
+	len = ft_len_lst(stack);
+	if (j < len && j < len / 2 && j < i - len)
 		return (1);
-	len = ft_len_lst(b);
-	aux = b;
-	while (len--)
-	{
-		tmp = aux->next;
-		while (tmp)
-		{
-			if (*aux->num < *tmp->num)
-				return(0);
-			tmp = tmp->next;
-		}
-		aux = aux->next;
-	}
-	return (1);
-}
-
-int	last_val(t_push *stack)
-{
-	t_push	*aux;
-
-	aux = stack;
-	while (aux->next)
-		aux = aux->next;
-	return (*aux->num);
-}
-
-int	not_in_stack(t_push *stack, long *chunk)
-{
-	t_push *aux;
-	int		i;
-
-	aux = stack;
-	while (aux)
-	{
-		i = 0;
-		while (chunk[i] != 2147483648)
-		{
-			if (*aux->num == chunk[i])
-				return (1);
-			i++;
-		}
-		aux = aux->next;
-	}
-	return (0);
+	else
+		return(0);
+	
 }

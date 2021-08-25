@@ -5,6 +5,7 @@ int *ft_sort_int_tab(int *tab, int size)
     int x;
     int y;
     int aux;
+
     x = 0;
     while (x <= size - 1)
     {
@@ -29,6 +30,7 @@ int *bubble(t_push *s)
     t_push  *aux;
     int     *array;
     int     i;
+
     aux = s;
     i = 0;
     array = malloc(sizeof(int) * ft_len_lst(s));
@@ -41,48 +43,31 @@ int *bubble(t_push *s)
     return (array);
 }
 
-long	**get_chunky(int *array, int len, int size, int chunk_l)
+static void	choose_rotate(t_push **b, int num)
 {
-	long	**chunk;
-	int		i;
-	int		j;
-	int 	c;
-
-	chunk = (long **)malloc(sizeof(long *) * chunk_l);
-	i = 0;
-	j = 0;
-	while (i < chunk_l)
-	{
-		c = 0;
-		if (i == chunk_l - 1)
-		{
-			chunk[i] = malloc(sizeof(long) * (len - j + 1));
-			size = len - j;
-		}
-		else
-			chunk[i] = malloc(sizeof(long) * (size + 1));
-		while (j < len && c < size)
-		{
-			chunk[i][c] = array[j];
-			j++;
-			c++;
-		}
-		chunk[i][c] = 2147483648;
-		i++;
-	}
-	return (chunk);
+	if (find_half(*b, num))
+		rotate(b, 0);
+	else
+		reverse_rotate(b, 0);
 }
 
-int	check_chunky(long *array, int nbr)
+void	sort_b(t_push **a, t_push **b)
 {
-	int		i;
-
-	i = 0;
-	while (array[i] != 2147483648)
+	int	low;
+	
+	while(ft_len_lst(*b))
 	{
-		if (array[i] == nbr)
-			return (1);
-		i++;
+		low = find_low(*b);
+		if(*(*b)->num == find_high(*b)
+			|| *(*b)->num == low)
+		{
+			push_a(a, b);
+			if (*(*a)->num == low)
+				rotate(a, 1);
+		}
+		else if (smart_rotate(find_high(*b), low, *b))
+			choose_rotate(b, low);
+		else
+			choose_rotate(b, find_high(*b));
 	}
-	return (0);
 }

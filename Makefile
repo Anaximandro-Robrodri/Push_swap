@@ -24,7 +24,7 @@ $(NAME): $(OBJS)
 	cp libft/libft.a $(NAME)
 	$(CC) $(FLAGS) -c $(SRC)
 	ar rc $(NAME) $(OBJS)
-	CC $(NAME) -o push_swap -g -fsanitize=address
+	CC $(NAME) -o push_swap
 
 clean:
 	$(MAKE) clean -C ./libft

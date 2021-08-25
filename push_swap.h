@@ -8,8 +8,9 @@
 
 typedef struct s_push
 {
-	int				*num;
+	int		*num;
 	struct	s_push	*next;
+	struct	s_push	*prev;
 }	t_push;
 
 int 	ft_is_space (char a);
@@ -22,14 +23,12 @@ void	ft_error(int i);
 // LST FUNCTIONS
 
 t_push	*create_new_node(int *num);
-void	print_list(t_push	*stack_a);
+void	print_list(t_push *stack_a, t_push *stack_b);
 int		ft_len_lst(t_push *stack_a);
 void	ft_check_equals(t_push *stack_a);
 void	ft_store_args(t_push **stack, int *num);
 int		check_success(t_push *stack_a);
-int		check_success_b(t_push *b);
-int		last_val(t_push *stack);
-int		not_in_stack(t_push *stack, long *chunk);
+int	smart_rotate(int high, int low, t_push *stack);
 
 /////////////////////////////////////////////////////////////
 //MOVEMENTS
@@ -48,17 +47,13 @@ void	push_a(t_push **stack_a, t_push **stack_b);
 void	ft_order(t_push **stack_a, t_push **stack_b);
 void	ft_three_num(t_push **a);
 void	ft_long_num(t_push **a, t_push **b);
-int		ft_pivot(t_push *stack, int len);
 int		find_high(t_push *stack);
 int		find_low(t_push	*stack);
-int		find_second_low(t_push *stack, int low);
 int		find_half(t_push *stack, int num);
-void	ft_serious_sorting(t_push **a, t_push **b, long **chunk, int chunk_l);
-void	ft_serious_sorting_b(t_push **a, t_push **b, int *array, int len);
-void	sort_b(t_push **a, t_push **b, long *chunk_1, long *chunk_2);
 int 	*ft_sort_int_tab(int *tab, int size);
 int 	*bubble(t_push *s);
-long	**get_chunky(int *array, int len, int size, int chunk_l);
-int		check_chunky(long *array, int nbr);
+void	ft_sort_hundred(t_push **a, t_push **b, int pivot);
+void	ft_sort_quarter(t_push **a, t_push **b, int *array);
+void	sort_b(t_push **a, t_push **b);
 
 #endif

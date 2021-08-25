@@ -13,11 +13,17 @@ t_push	*create_new_node(int *num)
 }
 
 // Función para comprobar que todo está ok. Borrar más adelante / Sustituir por write
-void	print_list(t_push *stack_a)
+void	print_list(t_push *stack_a, t_push *stack_b)
 {
 	while (stack_a)
 	{
-		printf("%d\n", (int)*(stack_a->num));
+		printf("%d", (int)*(stack_a->num));
+		if (stack_b)
+		{
+			printf("%10d", (int)*(stack_b->num));	
+			stack_b = stack_b->next;
+		}
+		printf("\n");
 		stack_a = stack_a->next;
 	}
 }
@@ -40,9 +46,7 @@ int	ft_len_lst(t_push *stack_a)
 void	ft_check_equals(t_push *stack_a)
 {
 	t_push	*tmp;
-	int		len;
 
-	len = ft_len_lst(stack_a);
 	while (stack_a)
 	{
 		tmp = stack_a->next;
