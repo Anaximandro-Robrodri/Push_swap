@@ -29,6 +29,7 @@ void	ft_check_equals(t_push *stack_a);
 void	ft_store_args(t_push **stack, int *num);
 int		check_success(t_push *stack_a);
 int	smart_rotate(int high, int low, t_push *stack);
+int	check_left(t_push *a, int pivot);
 
 /////////////////////////////////////////////////////////////
 //MOVEMENTS
@@ -53,7 +54,7 @@ int		find_half(t_push *stack, int num);
 int 	*ft_sort_int_tab(int *tab, int size);
 int 	*bubble(t_push *s);
 void	ft_sort_hundred(t_push **a, t_push **b, int pivot);
-void	ft_sort_quarter(t_push **a, t_push **b, int *array);
+void	ft_quarter(t_push **a, t_push **b, int i, int *array);
 void	sort_b(t_push **a, t_push **b);
 
 #endif

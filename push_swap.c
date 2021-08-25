@@ -10,21 +10,20 @@ void	ft_error(int i)
 static	void	ft_error_control(int i, char **argv)
 {
 	int	pos;
-	int	flag;
 
 	pos = 0;
-	flag = 0;
 	while (argv[i][pos])
 	{
 		if (!ft_isdigit(argv[i][pos]) && !ft_is_space(argv[i][pos])
 				&& !ft_is_sign(argv[i][pos]))
 				ft_error(-1);
-		if (ft_isdigit(argv[i][pos]))
-			flag = 1;
+		if (ft_is_sign(argv[i][pos]))
+		{
+			if (!ft_isdigit(argv[i][pos + 1]) || !argv[i][pos + 1])
+				ft_error(-1);
+		}
 		pos++;
 	}
-	if (flag == 0)
-		ft_error(0);
 }
 
 void	ft_store_args(t_push **stack, int *num)
@@ -80,7 +79,6 @@ int	main (int argc, char **argv)
 		ft_error(0);
 	ft_check_equals(stack_a);
 	ft_order(&stack_a, &stack_b);
-//	print_list(stack_a, stack_b);
 //	 system("leaks push_swap");
 	return(0);
 }

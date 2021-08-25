@@ -41,20 +41,6 @@ void	ft_long_num(t_push **a, t_push **b)
 		push_a(a, b);
 }
 
-static int	check_left(t_push *a, int pivot)
-{
-	t_push *aux;
-
-	aux = a;
-	while (aux)
-	{
-		if (*aux->num < pivot)
-			return (1);
-		aux = aux->next;
-	}
-	return (0);
-}
-
 void	ft_sort_hundred(t_push **a, t_push **b, int pivot)
 {
 	while (1)
@@ -83,6 +69,106 @@ void	ft_sort_hundred(t_push **a, t_push **b, int pivot)
 		rotate(a, 1);
 }
 
+static int get_pivot(int *array, int i, int len)
+{
+	if (i == 1)
+		return(array[((len / 4) / 2) - 1]);
+	else if (i == 2)
+		return(array[((len / 2) - ((len / 4) / 2)) - 1]);
+	else if (i == 3)
+		return(array[(((len / 2) + (len / 4)) - ((len / 4) / 2)) - 1]);
+	else
+		return(array[(len - ((len / 4) / 2)) - 1]);
+}
+
+static int get_quarter(int *array, int i, int len)
+{
+	if (i == 1)
+		return(array[0]);
+	else if (i == 2)
+		return(array[(len / 4) - 1]);
+	else if (i == 3)
+		return(array[(len / 2) - 1]);
+	else if (i == 4)
+		return(array[((len / 2) + (len / 4) - 1)]);
+	else
+		return(array[len - 1]);
+}
+
+static int is_left(t_push *stack, int pivot, int quarter)
+{
+	t_push	*aux;
+
+	aux = stack;
+	while (aux)
+	{
+		if (*aux->num < pivot && *aux->num >= quarter)
+			return (1);
+		aux = aux->next;
+	}
+	return(0);
+}
+
+static int is_left_high(t_push *stack, int pivot, int quarter)
+{
+	t_push *aux;
+
+	aux = stack;
+	while(aux)
+	{
+		if(*aux->num >=pivot && *aux->num < quarter)
+			return(1);
+		aux = aux->next;
+	}
+	return(0);
+}
+
+void	ft_quarter(t_push **a, t_push **b, int i, int *array)
+{
+	int	pivot;
+	int	quarter;
+	int	next_q;
+
+	pivot = get_pivot(array, i, ft_len_lst(*a));
+	quarter = get_quarter(array, i, ft_len_lst(*a));
+	next_q = get_quarter(array, i + 1, ft_len_lst(*a));
+	while(1)
+	{
+		if(*(*a)->num < pivot && *(*a)->num >= quarter)
+		{
+			push_b(a, b);
+			if (!is_left(*a, pivot, quarter))
+				break ;
+		}
+		else
+			rotate(a, 1);
+	}
+	sort_b(a, b);
+	while(*(*a)->num < pivot && *(*a)->num < quarter)
+		rotate(a, 1);
+	while(1)
+	{
+		if(*(*a)->num >= pivot && *(*a)->num < next_q)
+		{
+			push_b(a,b);
+			if (!is_left_high(*a, pivot, next_q))
+				break ;
+		}
+		else
+			rotate(a, 1);
+	}
+//	while(*(*a)->num != quarter)
+//		rotate(a, 1);
+//	print_list(*a, *b);
+//	printf("pivot   %d\n", pivot);
+//	printf("quarter %d\n", quarter);
+//	printf("next_q  %d\n", next_q);
+//	sort_b(a, b);
+//	while (*(*a)->num != next_q)
+//		rotate(a, 1);
+	print_list(*a, *b);
+}
+
 void	ft_order(t_push	**stack_a, t_push **stack_b)
 {
 	int	len;
@@ -103,9 +189,12 @@ void	ft_order(t_push	**stack_a, t_push **stack_b)
 		ft_sort_hundred(stack_a, stack_b, array[(len / 2) - 1]);
 		free(array);
 	}
-/*	else
+	else
 	{
-		ft_sort_quarter(stack_a, stack_b, array);
+		ft_quarter(stack_a, stack_b, 1, array);
+//		ft_quarter(stack_a, stack_b, 3, array);
+//		ft_quarter(stack_a, stack_b, 2, array);
+//		ft_quarter(stack_a, stack_b, 1, array);
 		free(array);
-	}*/
+	}
 }

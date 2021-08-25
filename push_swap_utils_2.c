@@ -1,5 +1,19 @@
 #include "push_swap.h"
 
+int	check_left(t_push *a, int pivot)
+{
+	t_push *aux;
+
+	aux = a;
+	while(aux)
+	{
+		if(*aux->num < pivot)
+			return(1);
+		aux = aux->next;
+	}
+	return(0);
+}
+
 int *ft_sort_int_tab(int *tab, int size)
 {
     int x;
