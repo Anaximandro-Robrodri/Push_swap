@@ -6,7 +6,7 @@
 /*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 13:28:44 by robrodri          #+#    #+#             */
-/*   Updated: 2021/08/26 13:28:45 by robrodri         ###   ########.fr       */
+/*   Updated: 2021/08/26 14:40:30 by robrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_error(int i)
 {
 	write (1, "Error\n", 6);
-	system("leaks push_swap");
 	exit(i);
 }
 
@@ -32,6 +31,11 @@ static	void	ft_error_control(int i, char **argv)
 		if (ft_is_sign(argv[i][pos]))
 		{
 			if (!ft_isdigit(argv[i][pos + 1]) || !argv[i][pos + 1])
+				ft_error(-1);
+		}
+		if (ft_is_space(argv[i][pos]))
+		{
+			if (!argv[i][pos + 1])
 				ft_error(-1);
 		}
 		pos++;
@@ -88,9 +92,8 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	stack_a = ft_args(argc, argv, stack_a);
 	if (ft_len_lst(stack_a) < 2)
-		ft_error(0);
+		return (0);
 	ft_check_equals(stack_a);
 	ft_order(&stack_a, &stack_b);
-	 system("leaks push_swap");
 	return (0);
 }
