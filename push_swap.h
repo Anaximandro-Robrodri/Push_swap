@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/26 13:28:51 by robrodri          #+#    #+#             */
+/*   Updated: 2021/08/26 13:28:52 by robrodri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -8,13 +20,20 @@
 
 typedef struct s_push
 {
-	int		*num;
-	struct	s_push	*next;
-	struct	s_push	*prev;
+	int				*num;
+	struct s_push	*next;
+	struct s_push	*prev;
 }	t_push;
 
-int 	ft_is_space (char a);
-int 	ft_is_sign (char a);
+typedef struct s_pivot
+{
+	int		pivot;
+	int		quarter;
+	int		next_q;
+}	t_pivot;
+
+int		ft_is_space(char a);
+int		ft_is_sign(char a);
 int		ft_split_len(char **str);
 long	ft_atoi_plus(char *str);
 void	ft_error(int i);
@@ -23,13 +42,12 @@ void	ft_error(int i);
 // LST FUNCTIONS
 
 t_push	*create_new_node(int *num);
-void	print_list(t_push *stack_a, t_push *stack_b);
 int		ft_len_lst(t_push *stack_a);
 void	ft_check_equals(t_push *stack_a);
 void	ft_store_args(t_push **stack, int *num);
 int		check_success(t_push *stack_a);
-int	smart_rotate(int high, int low, t_push *stack);
-int	check_left(t_push *a, int pivot);
+int		smart_rotate(int high, int low, t_push *stack);
+int		check_left(t_push *a, int pivot);
 
 /////////////////////////////////////////////////////////////
 //MOVEMENTS
@@ -51,10 +69,17 @@ void	ft_long_num(t_push **a, t_push **b);
 int		find_high(t_push *stack);
 int		find_low(t_push	*stack);
 int		find_half(t_push *stack, int num);
-int 	*ft_sort_int_tab(int *tab, int size);
-int 	*bubble(t_push *s);
+int		*ft_sort_int_tab(int *tab, int size);
+int		*bubble(t_push *s);
 void	ft_sort_hundred(t_push **a, t_push **b, int pivot);
 void	ft_quarter(t_push **a, t_push **b, int i, int *array);
 void	sort_b(t_push **a, t_push **b);
+int		get_pivot(int *array, int i, int len);
+int		get_quarter(int *array, int i, int len);
+int		is_left(t_push *stack, int pivot, int quarter);
+int		is_left_high(t_push *stack, int pivot, int quarter);
+void	init_pivot_points(t_pivot *p, int *array, int i, t_push *a);
+void	first_cycle(t_pivot p, t_push **a, t_push **b);
+void	second_cycle(t_pivot p, t_push **a, t_push **b);
 
 #endif

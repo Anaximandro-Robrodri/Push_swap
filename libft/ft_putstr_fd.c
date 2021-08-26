@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/30 15:56:08 by robrodri          #+#    #+#             */
-/*   Updated: 2021/05/30 15:56:10 by robrodri         ###   ########.fr       */
+/*   Created: 2021/08/26 13:36:44 by robrodri          #+#    #+#             */
+/*   Updated: 2021/08/26 13:38:15 by robrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;

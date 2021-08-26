@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_moves.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/26 13:29:13 by robrodri          #+#    #+#             */
+/*   Updated: 2021/08/26 13:29:14 by robrodri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	swap(t_push **stack, int i)
@@ -14,7 +26,6 @@ void	swap(t_push **stack, int i)
 		ft_putstr("sa\n");
 	else if (i == 0)
 		ft_putstr("sb\n");
-
 }
 
 void	ss(t_push **stack_a, t_push **stack_b)
@@ -44,7 +55,6 @@ void	rotate(t_push **stack, int i)
 		ft_putstr("rb\n");
 }
 
-// DE A PASA AL STACK B
 void	push_b(t_push **stack_a, t_push **stack_b)
 {
 	t_push	*tmp;
@@ -57,7 +67,7 @@ void	push_b(t_push **stack_a, t_push **stack_b)
 	*stack_a = tmp;
 	ft_putstr("pb\n");
 }
- // DE B PASA AL STACK A
+
 void	push_a(t_push **stack_a, t_push **stack_b)
 {
 	t_push	*tmp;

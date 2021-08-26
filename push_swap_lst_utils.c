@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_lst_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/26 13:29:09 by robrodri          #+#    #+#             */
+/*   Updated: 2021/08/26 13:29:10 by robrodri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_push	*create_new_node(int *num)
@@ -10,22 +22,6 @@ t_push	*create_new_node(int *num)
 	node->num = num;
 	node->next = NULL;
 	return (node);
-}
-
-// Función para comprobar que todo está ok. Borrar más adelante / Sustituir por write
-void	print_list(t_push *stack_a, t_push *stack_b)
-{
-	while (stack_a)
-	{
-		printf("%d", (int)*(stack_a->num));
-		if (stack_b)
-		{
-			printf("%10d", (int)*(stack_b->num));	
-			stack_b = stack_b->next;
-		}
-		printf("\n");
-		stack_a = stack_a->next;
-	}
 }
 
 int	ft_len_lst(t_push *stack_a)
@@ -76,7 +72,7 @@ int	check_success(t_push *stack_a)
 		while (tmp)
 		{
 			if (*aux->num > *tmp->num)
-				return(0);
+				return (0);
 			tmp = tmp->next;
 		}
 		aux = aux->next;

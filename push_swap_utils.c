@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/26 13:29:35 by robrodri          #+#    #+#             */
+/*   Updated: 2021/08/26 13:29:36 by robrodri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	ft_is_space (char a)
+int	ft_is_space(char a)
 {
 	if ((a >= 9 && a <= 13) || a == ' ')
 		return (1);
 	return (0);
 }
 
-int	ft_is_sign (char a)
+int	ft_is_sign(char a)
 {
 	if (a == '+' || a == '-')
 		return (1);
@@ -24,7 +36,7 @@ int	ft_split_len(char **str)
 	return (i);
 }
 
-long	ft_atoi_plus (char *str)
+long	ft_atoi_plus(char *str)
 {
 	long			nb;
 	int				sign;

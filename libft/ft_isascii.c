@@ -6,12 +6,12 @@
 /*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 15:54:19 by robrodri          #+#    #+#             */
-/*   Updated: 2021/05/30 15:54:20 by robrodri         ###   ########.fr       */
+/*   Updated: 2021/08/26 13:35:24 by robrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-int	ft_isascii (int c)
+int	ft_isascii(int c)
 {
 	if (c < 0 || c > 0177)
 		return (0);

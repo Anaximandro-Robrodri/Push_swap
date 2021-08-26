@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_order_2.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/26 13:29:30 by robrodri          #+#    #+#             */
+/*   Updated: 2021/08/26 13:29:32 by robrodri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int		find_half(t_push *stack, int num)
+int	find_half(t_push *stack, int num)
 {
 	int		len;
 	t_push	*tmp;
@@ -12,13 +24,13 @@ int		find_half(t_push *stack, int num)
 	while (len--)
 	{
 		if (num == *tmp->num)
-			return(1);
+			return (1);
 		tmp = tmp->next;
 	}
 	return (0);
 }
 
-int		find_high(t_push *stack)
+int	find_high(t_push *stack)
 {
 	t_push	*aux;
 	int		high;
@@ -36,7 +48,7 @@ int		find_high(t_push *stack)
 	return (high);
 }
 
-int		find_low(t_push	*stack)
+int	find_low(t_push	*stack)
 {
 	t_push	*aux;
 	int		low;
@@ -54,7 +66,6 @@ int		find_low(t_push	*stack)
 	return (low);
 }
 
-
 static int	get_len(t_push *aux, int num)
 {
 	int	ret;
@@ -62,20 +73,20 @@ static int	get_len(t_push *aux, int num)
 	ret = 0;
 	while (aux)
 	{
-		if(*aux->num == num)
+		if (*aux->num == num)
 			break ;
 		aux = aux->next;
 		ret++;
 	}
-	return(ret);
+	return (ret);
 }
 
 int	smart_rotate(int high, int low, t_push *stack)
 {
 	t_push	*aux;
-	int	i;
-	int	j;
-	int	len;
+	int		i;
+	int		j;
+	int		len;
 
 	aux = stack;
 	i = get_len(aux, high);
@@ -84,6 +95,5 @@ int	smart_rotate(int high, int low, t_push *stack)
 	if (j < len && j < len / 2 && j < i - len)
 		return (1);
 	else
-		return(0);
-	
+		return (0);
 }

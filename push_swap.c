@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/26 13:28:44 by robrodri          #+#    #+#             */
+/*   Updated: 2021/08/26 13:28:45 by robrodri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_error(int i)
 {
 	write (1, "Error\n", 6);
-//	system("leaks push_swap");
+	system("leaks push_swap");
 	exit(i);
 }
 
@@ -16,7 +28,7 @@ static	void	ft_error_control(int i, char **argv)
 	{
 		if (!ft_isdigit(argv[i][pos]) && !ft_is_space(argv[i][pos])
 				&& !ft_is_sign(argv[i][pos]))
-				ft_error(-1);
+			ft_error(-1);
 		if (ft_is_sign(argv[i][pos]))
 		{
 			if (!ft_isdigit(argv[i][pos + 1]) || !argv[i][pos + 1])
@@ -62,16 +74,16 @@ static	t_push	*ft_args(int argc, char **argv, t_push *stack_a)
 		}
 		free(split);
 	}
-	return(stack_a);
+	return (stack_a);
 }
 
-int	main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_push	*stack_a;
 	t_push	*stack_b;
 
 	if (argc < 2)
-		exit(0);
+		exit (-1);
 	stack_a = NULL;
 	stack_b = NULL;
 	stack_a = ft_args(argc, argv, stack_a);
@@ -79,6 +91,6 @@ int	main (int argc, char **argv)
 		ft_error(0);
 	ft_check_equals(stack_a);
 	ft_order(&stack_a, &stack_b);
-//	 system("leaks push_swap");
-	return(0);
+	 system("leaks push_swap");
+	return (0);
 }

@@ -6,12 +6,12 @@
 /*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 15:53:37 by robrodri          #+#    #+#             */
-/*   Updated: 2021/05/30 15:53:39 by robrodri         ###   ########.fr       */
+/*   Updated: 2021/08/26 13:37:52 by robrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-int	ft_isdigit (int c)
+int	ft_isdigit(int c)
 {
 	if ((c < 48) || (c > 57))
 	{

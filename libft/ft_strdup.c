@@ -6,12 +6,12 @@
 /*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 15:55:06 by robrodri          #+#    #+#             */
-/*   Updated: 2021/05/30 15:55:08 by robrodri         ###   ########.fr       */
+/*   Updated: 2021/08/26 13:37:04 by robrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-static char	*ft_strcpy (char *dest, const char *src)
+static char	*ft_strcpy(char *dest, const char *src)
 {
 	int		i;
 
