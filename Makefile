@@ -6,13 +6,11 @@
 #    By: robrodri <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/26 13:28:37 by robrodri          #+#    #+#              #
-#    Updated: 2021/08/26 13:28:39 by robrodri         ###   ########.fr        #
+#    Updated: 2021/08/26 15:08:34 by robrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBFT = ./libft/libft.a
-
-NAME = push_swap.a
+NAME = push_swap
 
 SRC =	push_swap.c \
 		push_swap_utils.c \
@@ -26,27 +24,30 @@ SRC =	push_swap.c \
 		push_swap_five_hundred_2.c
 
 OBJS = $(SRC:.c=.o)
+LIBFT_DIR = ./libft/
+LIBFT = libft.a
 
 CC = gcc
 
-FLAGS = -Wall -Wextra
+FLAGS = -Wall -Wextra -Werror
 
-all: $(NAME)
+all: make-lift $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) -C ./libft
-	cp libft/libft.a $(NAME)
-	$(CC) $(FLAGS) -c $(SRC)
-	ar rc $(NAME) $(OBJS)
-	CC $(NAME) -o push_swap
+	$(CC) $(FLAGS) $(OBJS) $(LIBFT_DIR)$(LIBFT) -o $(NAME)
 
+make-lift:
+	$(MAKE) -C $(LIBFT_DIR)
+
+$(OBJS): $(SRC)
+	$(CC) $(FLAGS) -c $(SRC)
 clean:
-	$(MAKE) clean -C ./libft
-	rm -f $(OBJS)
+	$(MAKE) clean -C $(LIBFT_DIR)
+	rm -rf $(OBJS)
 
 fclean: clean
-	$(MAKE) fclean -C ./libft
-	rm -f $(NAME)
+	$(MAKE) fclean -C $(LIBFT_DIR)
+	rm -rf $(NAME)
 
 re: fclean all
 
