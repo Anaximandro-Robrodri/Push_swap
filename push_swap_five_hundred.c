@@ -45,7 +45,7 @@ int	is_left(t_push *stack, int pivot, int quarter)
 	aux = stack;
 	while (aux)
 	{
-		if (*aux->num < pivot && *aux->num >= quarter)
+		if (aux->num < pivot && aux->num >= quarter)
 			return (1);
 		aux = aux->next;
 	}
@@ -59,7 +59,7 @@ int	is_left_high(t_push *stack, int pivot, int quarter)
 	aux = stack;
 	while (aux)
 	{
-		if (*aux->num > pivot && *aux->num < quarter)
+		if (aux->num > pivot && aux->num < quarter)
 			return (1);
 		aux = aux->next;
 	}

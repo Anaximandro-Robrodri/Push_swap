@@ -23,7 +23,7 @@ int	find_half(t_push *stack, int num)
 	len = (ft_len_lst(stack) / 2);
 	while (len--)
 	{
-		if (num == *tmp->num)
+		if (num == tmp->num)
 			return (1);
 		tmp = tmp->next;
 	}
@@ -38,11 +38,11 @@ int	find_high(t_push *stack)
 	if (!stack)
 		return (0);
 	aux = stack;
-	high = *aux->num;
+	high = aux->num;
 	while (aux)
 	{
-		if (high < *aux->num)
-			high = *aux->num;
+		if (high < aux->num)
+			high = aux->num;
 		aux = aux->next;
 	}
 	return (high);
@@ -56,11 +56,11 @@ int	find_low(t_push	*stack)
 	if (!stack)
 		return (0);
 	aux = stack;
-	low = *aux->num;
+	low = aux->num;
 	while (aux)
 	{
-		if (low > *aux->num)
-			low = *aux->num;
+		if (low > aux->num)
+			low = aux->num;
 		aux = aux->next;
 	}
 	return (low);
@@ -73,7 +73,7 @@ static int	get_len(t_push *aux, int num)
 	ret = 0;
 	while (aux)
 	{
-		if (*aux->num == num)
+		if (aux->num == num)
 			break ;
 		aux = aux->next;
 		ret++;

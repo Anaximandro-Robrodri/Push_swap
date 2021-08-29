@@ -20,9 +20,8 @@
 
 typedef struct s_push
 {
-	int				*num;
+	int		num;
 	struct s_push	*next;
-	struct s_push	*prev;
 }	t_push;
 
 typedef struct s_pivot
@@ -37,17 +36,20 @@ int		ft_is_sign(char a);
 int		ft_split_len(char **str);
 long	ft_atoi_plus(char *str);
 void	ft_error(int i);
+int	not_good_argv(int argc, char **argv);
+int	ft_error_control(int argc, char **argv);
 
 //////////////////////////////////////////////////////////////
 // LST FUNCTIONS
 
-t_push	*create_new_node(int *num);
+t_push	*create_new_node(int num);
 int		ft_len_lst(t_push *stack_a);
 void	ft_check_equals(t_push *stack_a);
-void	ft_store_args(t_push **stack, int *num);
+void	ft_store_args(t_push **stack, int num);
 int		check_success(t_push *stack_a);
 int		smart_rotate(int high, int low, t_push *stack);
 int		check_left(t_push *a, int pivot);
+void	free_list(t_push **stack);
 
 /////////////////////////////////////////////////////////////
 //MOVEMENTS

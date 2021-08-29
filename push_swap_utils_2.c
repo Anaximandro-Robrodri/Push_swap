@@ -19,7 +19,7 @@ int	check_left(t_push *a, int pivot)
 	aux = a;
 	while (aux)
 	{
-		if (*aux->num < pivot)
+		if (aux->num < pivot)
 			return (1);
 		aux = aux->next;
 	}
@@ -62,7 +62,7 @@ int	*bubble(t_push *s)
 	array = malloc(sizeof(int) * ft_len_lst(s));
 	while (aux)
 	{
-		array[i++] = *aux->num;
+		array[i++] = aux->num;
 		aux = aux->next;
 	}
 	array = ft_sort_int_tab(array, i);
@@ -84,11 +84,11 @@ void	sort_b(t_push **a, t_push **b)
 	while (ft_len_lst(*b))
 	{
 		low = find_low(*b);
-		if (*(*b)->num == find_high(*b)
-			|| *(*b)->num == low)
+		if ((*b)->num == find_high(*b)
+			|| (*b)->num == low)
 		{
 			push_a(a, b);
-			if (*(*a)->num == low)
+			if ((*a)->num == low)
 				rotate(a, 1);
 		}
 		else if (smart_rotate(find_high(*b), low, *b))

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_push	*create_new_node(int *num)
+t_push	*create_new_node(int num)
 {
 	t_push	*node;
 
@@ -48,8 +48,8 @@ void	ft_check_equals(t_push *stack_a)
 		tmp = stack_a->next;
 		while (tmp)
 		{
-			if (*stack_a->num == *tmp->num)
-				ft_error(0);
+			if (stack_a->num == tmp->num)
+				ft_error(-1);
 			tmp = tmp->next;
 		}
 		stack_a = stack_a->next;
@@ -60,7 +60,7 @@ int	check_success(t_push *stack_a)
 {
 	t_push	*tmp;
 	t_push	*aux;
-	int		len;
+	int	len;
 
 	if (!stack_a)
 		return (1);
@@ -71,7 +71,7 @@ int	check_success(t_push *stack_a)
 		tmp = aux->next;
 		while (tmp)
 		{
-			if (*aux->num > *tmp->num)
+			if (aux->num > tmp->num)
 				return (0);
 			tmp = tmp->next;
 		}
