@@ -6,7 +6,7 @@
 /*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 13:28:51 by robrodri          #+#    #+#             */
-/*   Updated: 2021/08/26 13:28:52 by robrodri         ###   ########.fr       */
+/*   Updated: 2021/08/30 11:08:45 by robrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct s_push
 {
-	int		num;
+	int				num;
 	struct s_push	*next;
 }	t_push;
 
@@ -36,8 +36,8 @@ int		ft_is_sign(char a);
 int		ft_split_len(char **str);
 long	ft_atoi_plus(char *str);
 void	ft_error(int i);
-int	not_good_argv(int argc, char **argv);
-int	ft_error_control(int argc, char **argv);
+int		not_good_argv(int argc, char **argv);
+int		ft_error_control(int argc, char **argv);
 
 //////////////////////////////////////////////////////////////
 // LST FUNCTIONS

@@ -6,7 +6,7 @@
 /*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 13:29:09 by robrodri          #+#    #+#             */
-/*   Updated: 2021/08/26 13:29:10 by robrodri         ###   ########.fr       */
+/*   Updated: 2021/08/30 11:09:44 by robrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	check_success(t_push *stack_a)
 {
 	t_push	*tmp;
 	t_push	*aux;
-	int	len;
+	int		len;
 
 	if (!stack_a)
 		return (1);

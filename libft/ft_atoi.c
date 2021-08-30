@@ -6,11 +6,12 @@
 /*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 15:50:12 by robrodri          #+#    #+#             */
-/*   Updated: 2021/05/30 15:50:14 by robrodri         ###   ########.fr       */
+/*   Updated: 2021/08/30 11:10:22 by robrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int	ft_atoi(const char *str)
 {
 	int				i;

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
 static int	ft_is_inset(char const *set, char c)
 {
 	while (*set)

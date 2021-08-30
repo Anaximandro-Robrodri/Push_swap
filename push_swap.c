@@ -6,7 +6,7 @@
 /*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 13:28:44 by robrodri          #+#    #+#             */
-/*   Updated: 2021/08/26 14:40:30 by robrodri         ###   ########.fr       */
+/*   Updated: 2021/08/30 11:34:09 by robrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ int	ft_error_control(int i, char **argv)
 	{
 		if (!ft_isdigit(argv[i][pos]) && !ft_is_space(argv[i][pos])
 				&& !ft_is_sign(argv[i][pos]))
-			return(0);
+			return (0);
 		if (ft_is_sign(argv[i][pos]))
 		{
 			if (!ft_isdigit(argv[i][pos + 1]) || !argv[i][pos + 1])
-				return(0);
+				return (0);
 		}
 		pos++;
 	}
-	return(1);
+	return (1);
 }
 
 void	ft_store_args(t_push **stack, int num)
@@ -55,8 +55,8 @@ void	ft_store_args(t_push **stack, int num)
 static	t_push	*ft_args(int argc, char **argv, t_push *stack_a)
 {
 	char	**split;
-	int	len;
-	int	num;
+	int		len;
+	int		num;
 
 	while (--argc)
 	{

@@ -6,7 +6,7 @@
 /*   By: robrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 13:29:35 by robrodri          #+#    #+#             */
-/*   Updated: 2021/08/26 13:29:36 by robrodri         ###   ########.fr       */
+/*   Updated: 2021/08/30 11:34:18 by robrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,5 @@ long	ft_atoi_plus(char *str)
 	if (!ft_is_space(*str) && *str)
 		ft_error(-1);
 	nb *= sign;
-	if (nb > INT_MAX || nb < INT_MIN)
-		ft_error(-1);
 	return (nb);
 }

@@ -9,7 +9,9 @@
 /*   Updated: 2021/06/14 17:59:37 by robrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
+
 static int	ft_strlen(char *base)
 {
 	int	c;
@@ -34,7 +36,7 @@ static int	gest_errors(char *base)
 	while (base[e] != '\0' && base[f] != '\0' && d > 1 )
 	{
 		while (base[e] != '\0' && base[f] != '\0')
-		{	
+		{
 			if ((base[e] == base[f] && e != f) || (base[f] == '+'\
 				|| base[f] == '-'))
 			{
